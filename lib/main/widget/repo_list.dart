@@ -65,7 +65,7 @@ class _RepoItemWidget extends StatelessWidget {
         boxShadow: const [
           BoxShadow(
             color: Colors.grey,
-            offset: Offset(0.0, 1.0), //(x,y)
+            offset: Offset(0.0, 1.0),
             blurRadius: 1.4,
           ),
         ],
@@ -141,7 +141,7 @@ class _IssueTag extends StatelessWidget {
     return Row(
       children: [
         SvgPicture.asset(
-          "assets/issue.svg",
+          "assets/svg/issue.svg",
           colorFilter: const ColorFilter.mode(Colors.black54, BlendMode.srcIn),
         ),
         const SizedBox(width: 6.0),
@@ -159,7 +159,7 @@ class _ForkTag extends StatelessWidget {
     return Row(
       children: [
         SvgPicture.asset(
-          "assets/fork.svg",
+          "assets/svg/fork.svg",
           colorFilter: const ColorFilter.mode(Colors.black54, BlendMode.srcIn),
         ),
         const SizedBox(width: 6.0),
@@ -177,7 +177,7 @@ class _StarTag extends StatelessWidget {
     return Row(
       children: [
         SvgPicture.asset(
-          "assets/star.svg",
+          "assets/svg/star.svg",
           colorFilter: const ColorFilter.mode(Colors.black54, BlendMode.srcIn),
         ),
         const SizedBox(width: 6.0),

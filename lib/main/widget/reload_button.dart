@@ -12,6 +12,13 @@ class _ReloadButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(defaultRadius),
         color: Colors.blue,
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.grey,
+            offset: Offset(0.0, 1.0),
+            blurRadius: 1.4,
+          ),
+        ],
       ),
       child: const Row(
         mainAxisSize: MainAxisSize.min,

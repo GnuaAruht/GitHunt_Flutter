@@ -21,36 +21,62 @@ class _DateFilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 50.0,
-      padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-      constraints: const BoxConstraints(minWidth: 100.0),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(defaultRadius),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset(0.0, 1.0), //(x,y)
-            blurRadius: 0.8,
-          ),
-        ],
-      ),
-      alignment: Alignment.center,
-      child: const Row(
-        children: [
-          Icon(Icons.calendar_month_outlined, color: Colors.black),
-          SizedBox(width: 8.0),
-          Text('Weekly')
-        ],
+    return PopupMenuButton(
+      offset: const Offset(0, 1),
+      position: PopupMenuPosition.under,
+      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+      onSelected: (filter) {
+        // todo update selected filter
+      },
+      itemBuilder: (BuildContext context) => DateFilter.values
+          .map(
+            (filter) => PopupMenuItem<DateFilter>(
+              value: filter,
+              child: Text(filter.title),
+            ),
+          )
+          .toList(),
+      child: const _FilterBtnContainer(
+        child: Row(
+          children: [
+            Icon(
+              Icons.calendar_month_outlined,
+              color: Colors.black,
+            ),
+            SizedBox(width: 8.0),
+            Text('Weekly')
+          ],
+        ),
       ),
     );
   }
-
 }
 
 class _LanguageFilterButton extends StatelessWidget {
   const _LanguageFilterButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => context.go(RouteConst.languageFilterPath),
+      child: const _FilterBtnContainer(
+        child: Row(
+          children: [
+            Icon(Icons.filter_alt_sharp, color: Colors.black),
+            SizedBox(width: 8.0),
+            Text('Kotlin')
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _FilterBtnContainer extends StatelessWidget {
+  final Widget child;
+
+  const _FilterBtnContainer({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -64,19 +90,13 @@ class _LanguageFilterButton extends StatelessWidget {
         boxShadow: const [
           BoxShadow(
             color: Colors.grey,
-            offset: Offset(0.0, 1.0), //(x,y)
+            offset: Offset(0.0, 1.0),
             blurRadius: 0.8,
           ),
         ],
       ),
       alignment: Alignment.center,
-      child: const Row(
-        children: [
-          Icon(Icons.filter_alt_sharp, color: Colors.black),
-          SizedBox(width: 8.0),
-          Text('Kotlin')
-        ],
-      ),
+      child: child,
     );
   }
 }
