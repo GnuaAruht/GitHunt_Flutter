@@ -5,11 +5,48 @@ class _RepoListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: 10,
-      padding: const EdgeInsets.all(defaultPadding),
-      separatorBuilder: (context, index) => const SizedBox(height: 12.0),
-      itemBuilder: (context, index) => const _RepoItemWidget(),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const _RepoListTitleWidget(),
+        const SizedBox(height: defaultPadding),
+        ListView.separated(
+          itemCount: 10,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          padding: EdgeInsets.zero,
+          separatorBuilder: (context, index) => const SizedBox(height: 12.0),
+          itemBuilder: (context, index) => const _RepoItemWidget(),
+        ),
+      ],
+    );
+  }
+}
+
+class _RepoListTitleWidget extends StatelessWidget {
+  const _RepoListTitleWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: const TextSpan(
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 18.0,
+          fontWeight: FontWeight.w600,
+        ),
+        text: 'This week\t',
+        children: [
+          TextSpan(
+            text: 'June 13, 2024 - June 20, 2024',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 14.0,
+              fontWeight: FontWeight.normal,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -113,7 +150,6 @@ class _IssueTag extends StatelessWidget {
     );
   }
 }
-
 
 class _ForkTag extends StatelessWidget {
   const _ForkTag({super.key});
