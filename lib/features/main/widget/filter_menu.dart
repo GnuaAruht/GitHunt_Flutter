@@ -59,7 +59,16 @@ class _LanguageFilterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.go(RouteConst.languageFilterPath),
+      onTap: () {
+        context
+            .push<LanguageModel>(RouteConst.languageFilterPath)
+            .then((language) {
+          // todo add refresh main page
+          if(language != null) {
+            log(language.name,name: 'Selected Language');
+          }
+        });
+      },
       child: const _FilterBtnContainer(
         child: Row(
           children: [
