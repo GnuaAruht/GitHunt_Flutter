@@ -24,7 +24,7 @@ class _SearchWidget extends StatelessWidget {
           context.read<LanguageProvider>().searchLanguage(value ?? '');
         },
         decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.search),
+          prefixIcon: const Icon(Icons.search,color: Colors.grey),
           hintText: 'Filter Languages',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(defaultRadius),
