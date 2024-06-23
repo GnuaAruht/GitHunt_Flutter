@@ -60,12 +60,9 @@ class _LanguageFilterButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context
-            .push<LanguageModel>(RouteConst.languageFilterPath)
-            .then((language) {
-          // todo add refresh main page
-          if(language != null) {
-            log(language.name,name: 'Selected Language');
+        LanguageFilterBottomSheet.show(context).then((language) {
+          if (language != null) {
+            log(language.name, name: 'Selected Language');
           }
         });
       },
@@ -96,13 +93,7 @@ class _FilterBtnContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(defaultRadius),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset(0.0, 1.0),
-            blurRadius: 0.8,
-          ),
-        ],
+        boxShadow: defaultBoxShadow,
       ),
       alignment: Alignment.center,
       child: child,

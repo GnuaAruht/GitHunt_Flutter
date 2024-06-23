@@ -62,13 +62,7 @@ class _RepoItemWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(defaultRadius),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset(0.0, 1.0),
-            blurRadius: 1.4,
-          ),
-        ],
+        boxShadow: defaultBoxShadow,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

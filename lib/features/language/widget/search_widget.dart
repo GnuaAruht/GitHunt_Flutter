@@ -1,7 +1,10 @@
-part of '../language_filter_page.dart';
+part of '../language_filter_bottom_sheet.dart';
 
-class _SearchWidget extends StatelessWidget implements PreferredSizeWidget {
-  static const _searchHeight = 58.0;
+class _SearchWidget extends StatelessWidget {
+
+  final VoidCallback onTap;
+
+  const _SearchWidget({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -9,16 +12,14 @@ class _SearchWidget extends StatelessWidget implements PreferredSizeWidget {
     final uiState = context
         .select<LanguageProvider, UIState>((provider) => provider.uiState);
 
-    return Container(
-      width: double.infinity,
-      height: _searchHeight,
-      alignment: Alignment.center,
+    return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: defaultPadding,
         vertical: 4.0,
       ),
       child: TextField(
         enabled: uiState is UIStateSuccess,
+        onTap: onTap,
         onChanged: (value) {
           context.read<LanguageProvider>().searchLanguage(value ?? '');
         },
@@ -33,6 +34,4 @@ class _SearchWidget extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  @override
-  Size get preferredSize => const Size.fromHeight(_searchHeight);
 }

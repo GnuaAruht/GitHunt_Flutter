@@ -6,7 +6,7 @@ class LanguageModel {
 
   LanguageModel({required this.name, this.colorCode});
 
-  factory LanguageModel.allLanguage() => LanguageModel(name: 'All Language');
+  factory LanguageModel.allLanguage() => LanguageModel(name: 'All Languages');
 
   Color? get color {
     if (colorCode == null) return null;
