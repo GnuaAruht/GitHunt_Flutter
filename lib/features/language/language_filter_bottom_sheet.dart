@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:githunt_flutter/main.dart';
+import 'package:githunt_flutter/core/config/injector.dart';
 import 'package:provider/provider.dart';
 import 'package:githunt_flutter/core/config/ui_state.dart';
 import 'package:githunt_flutter/core/const/ui_const.dart';
