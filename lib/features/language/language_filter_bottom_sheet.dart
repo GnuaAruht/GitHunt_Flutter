@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:githunt_flutter/core/config/injector.dart';
 import 'package:provider/provider.dart';
@@ -13,10 +15,11 @@ part 'widget/language_list_widget.dart';
 
 part 'widget/filter_title_widget.dart';
 
+part 'widget/language_not_found_widget.dart';
+
 const _maxExtent = 0.95;
 
 class LanguageFilterBottomSheet extends StatefulWidget {
-
   static Future<LanguageModel?> show(BuildContext context) {
     return showModalBottomSheet<LanguageModel>(
       context: context,
@@ -68,6 +71,13 @@ class _LanguageFilterBottomSheetState extends State<LanguageFilterBottomSheet> {
     }
   }
 
+  void onScrollUpdate() {
+    final focusScopeNode = FocusScope.of(context);
+    if(focusScopeNode.hasFocus) {
+      focusScopeNode.unfocus();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return DraggableScrollableSheet(
@@ -76,15 +86,23 @@ class _LanguageFilterBottomSheetState extends State<LanguageFilterBottomSheet> {
       minChildSize: 0.35,
       maxChildSize: _maxExtent,
       builder: (context, scrollController) {
-        return Column(
-          children: [
-            const SizedBox(height: 10.0),
-            _FilterTitleWidget(onClosePressed: onClosePressed),
-            const SizedBox(height: 10.0),
-            _SearchWidget(onTap: onSearchTapped),
-            const SizedBox(height: 10.0),
-            Expanded(child: _FilterContent(controller: scrollController))
-          ],
+        return NotificationListener<ScrollNotification>(
+          onNotification: (notification) {
+            if (notification is ScrollUpdateNotification) {
+              onScrollUpdate();
+            }
+            return true;
+          },
+          child: Column(
+            children: [
+              const SizedBox(height: 10.0),
+              _FilterTitleWidget(onClosePressed: onClosePressed),
+              const SizedBox(height: 10.0),
+              _SearchWidget(onTap: onSearchTapped),
+              const SizedBox(height: 10.0),
+              Expanded(child: _FilterContent(controller: scrollController))
+            ],
+          ),
         );
       },
     );
@@ -94,14 +112,11 @@ class _LanguageFilterBottomSheetState extends State<LanguageFilterBottomSheet> {
 ///
 
 class _FilterContent extends StatelessWidget {
-
   final ScrollController controller;
-
   const _FilterContent({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-
     final uiState = context
         .select<LanguageProvider, UIState>((provider) => provider.uiState);
 
@@ -112,7 +127,5 @@ class _FilterContent extends StatelessWidget {
               error: (msg) => Center(child: Text(msg))) ??
           const Center(child: LoadingWidget()),
     );
-
   }
-
 }

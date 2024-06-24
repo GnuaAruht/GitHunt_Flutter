@@ -4,7 +4,6 @@ import 'package:path_provider/path_provider.dart';
 
 abstract class LocalDataSource {
   Future<List<LanguageModel>> getLanguageList();
-
   Future<void> saveLanguageList(List<LanguageModel> languages);
 }
 
