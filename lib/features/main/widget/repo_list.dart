@@ -5,20 +5,13 @@ class _RepoListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const _RepoListTitleWidget(),
-        const SizedBox(height: defaultPadding),
-        ListView.separated(
-          itemCount: 10,
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.zero,
-          separatorBuilder: (context, index) => const SizedBox(height: 12.0),
-          itemBuilder: (context, index) => const _RepoItemWidget(),
-        ),
-      ],
+    return ListView.separated(
+      itemCount: 3,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      padding: EdgeInsets.zero,
+      separatorBuilder: (context, index) => const SizedBox(height: 12.0),
+      itemBuilder: (context, index) => const _RepoItemWidget(),
     );
   }
 }
@@ -29,13 +22,15 @@ class _RepoListTitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RichText(
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
       text: const TextSpan(
         style: TextStyle(
           color: Colors.black,
-          fontSize: 18.0,
+          fontSize: 20.0,
           fontWeight: FontWeight.w600,
         ),
-        text: 'This week\t',
+        text: '100 days ago\t',
         children: [
           TextSpan(
             text: 'June 13, 2024 - June 20, 2024',

@@ -22,6 +22,7 @@ dependencies:
   isar: ^3.1.0+1
   isar_flutter_libs: ^3.1.0+1
   path_provider: ^2.0.15
+  flutter_smart_dialog: ^4.9.7+7
 
 dev_dependencies:
   flutter_test:
