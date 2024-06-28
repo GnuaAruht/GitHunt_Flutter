@@ -9,17 +9,18 @@ import 'package:githunt_flutter/core/model/language_model.dart';
 import 'package:githunt_flutter/features/language/provider/language_provider.dart';
 import 'package:githunt_flutter/features/widget/loading_widget.dart';
 
-part 'widget/search_widget.dart';
+part 'widget/search.dart';
 
-part 'widget/language_list_widget.dart';
+part 'widget/language_list.dart';
 
-part 'widget/filter_title_widget.dart';
+part 'widget/filter_title.dart';
 
-part 'widget/language_not_found_widget.dart';
+part 'widget/language_not_found.dart';
 
 const _maxExtent = 0.95;
 
 class LanguageFilterBottomSheet extends StatefulWidget {
+
   static Future<LanguageModel?> show(BuildContext context) {
     return showModalBottomSheet<LanguageModel>(
       context: context,

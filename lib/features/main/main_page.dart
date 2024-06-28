@@ -1,10 +1,13 @@
 import 'dart:developer';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:githunt_flutter/core/const/api_const.dart';
 import 'package:githunt_flutter/core/const/ui_const.dart';
 import 'package:githunt_flutter/core/config/date_filter.dart';
 import 'package:githunt_flutter/features/language/language_filter_bottom_sheet.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 part 'widget/app_bar.dart';
 
@@ -22,7 +25,6 @@ part 'widget/enter_token_dialog.dart';
 
 part 'widget/token_alert.dart';
 
-
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
 
@@ -34,7 +36,6 @@ class MainPage extends StatelessWidget {
         physics: ClampingScrollPhysics(),
         child: Column(
           children: [
-            _TokenAlertWidget(),
             Padding(
               padding: EdgeInsets.all(defaultPadding),
               child: Column(
@@ -55,7 +56,47 @@ class MainPage extends StatelessWidget {
       ),
     );
   }
+
+  void showTokenAlertBanner(BuildContext context) {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        leading: const Icon(Icons.info_outline_rounded,color: Colors.white),
+        content: const Text(_tokenAlertMessage),
+        contentTextStyle: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.normal,
+          fontSize: 16.0,
+        ),
+        backgroundColor: const Color(0xFFF1B00A),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              // ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+              _EnterTokenDialog.show(context);
+              // todo save entered token and dismiss the banner
+            },
+            child: const Text(
+              'ADD TOKEN',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          TextButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            },
+            child: const Text(
+              'DISMISS',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
-
-
-

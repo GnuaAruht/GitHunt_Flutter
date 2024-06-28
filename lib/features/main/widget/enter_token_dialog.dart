@@ -40,34 +40,23 @@ class _EnterTokenDialogState extends State<_EnterTokenDialog> {
   }
 
   Widget _buildInputForm() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(
-          child: Form(
-            key: _formKey,
-            child: TextFormField(
-              decoration: InputDecoration(
-                hintText: 'Token length - 40',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(defaultRadius),
-                ),
-              ),
-              onChanged: (value) => _token = value,
-              validator: (value) {
-                return (value == null || value.isEmpty || value.length != 40)
-                    ? "Please enter a valid token."
-                    : null;
-              },
-            ),
+    return Form(
+      key: _formKey,
+      child: TextFormField(
+        decoration: InputDecoration(
+          suffix: const Text('Generate'),
+          hintText: 'Token length - 40',
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(defaultRadius),
           ),
         ),
-        const SizedBox(width: 4.0),
-        TextButton(
-          onPressed: _onGenerateToken,
-          child: const Text('Generate'),
-        )
-      ],
+        onChanged: (value) => _token = value,
+        validator: (value) {
+          return (value == null || value.isEmpty || value.length != 40)
+              ? "Please enter a valid token."
+              : null;
+        },
+      ),
     );
   }
 
@@ -83,25 +72,28 @@ class _EnterTokenDialogState extends State<_EnterTokenDialog> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: const Text('Cancel'),
+          onPressed: () => SmartDialog.dismiss(),
+          child: const Text('CANCEL'),
         ),
-        const SizedBox(width: defaultPadding),
+        const SizedBox(width: defaultPadding / 2),
         TextButton(
           onPressed: _onSubmitToken,
-          child: const Text('Add'),
+          child: const Text('ADD'),
         ),
       ],
     );
   }
 
-  void _onGenerateToken() {
-    // todo navigate to token generate web page
+  void _onGenerateToken() async {
+    if (!await launchUrl(Uri.parse(ApiConst.tokenGenerateUrl),
+        mode: LaunchMode.inAppBrowserView)) {
+      throw Exception('Could not launch.');
+    }
   }
 
   void _onSubmitToken() {
-    if(_formKey.currentState!.validate()) {
-      Navigator.of(context).pop(_token);
+    if (_formKey.currentState!.validate()) {
+      SmartDialog.dismiss(result: _token);
     }
   }
 
