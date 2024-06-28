@@ -9,6 +9,6 @@ const defaultBoxShadow = [
   BoxShadow(
     color: Colors.grey,
     offset: Offset(0.0, 1.0),
-    blurRadius: 1.4,
+    blurRadius: 1.0,
   ),
 ];
