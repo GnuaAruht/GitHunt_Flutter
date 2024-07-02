@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:githunt_flutter/core/data/local/local_data_source.dart';
 import 'package:githunt_flutter/core/data/remote/remote_data_source.dart';
-import 'package:githunt_flutter/core/repository/github_repository.dart';
+import 'package:githunt_flutter/core/repository/app_repository.dart';
 
 GetIt injector = GetIt.instance;
 
@@ -23,6 +23,6 @@ void _injectRemoteDataSource() {
 }
 
 void _injectRepositories() {
-  injector.registerFactory<GithubRepository>(() =>
-      GithubRepositoryImpl(local: injector.get(), remote: injector.get()));
+  injector.registerFactory<AppRepository>(() =>
+      AppRepositoryImpl(local: injector.get(), remote: injector.get()));
 }

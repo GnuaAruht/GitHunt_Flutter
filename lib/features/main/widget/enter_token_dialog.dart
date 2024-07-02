@@ -44,8 +44,14 @@ class _EnterTokenDialogState extends State<_EnterTokenDialog> {
       key: _formKey,
       child: TextFormField(
         decoration: InputDecoration(
-          suffix: const Text('Generate'),
-          hintText: 'Token length - 40',
+          suffix: Padding(
+            padding: const EdgeInsets.only(left: 4.0),
+            child: GestureDetector(
+              onTap: _onGenerateToken,
+              child: const Text('Generate'),
+            ),
+          ),
+          hintText: 'Your token',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(defaultRadius),
           ),
@@ -72,13 +78,13 @@ class _EnterTokenDialogState extends State<_EnterTokenDialog> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         TextButton(
-          onPressed: () => SmartDialog.dismiss(),
-          child: const Text('CANCEL'),
+          onPressed: _onSubmitToken,
+          child: const Text('ADD'),
         ),
         const SizedBox(width: defaultPadding / 2),
         TextButton(
-          onPressed: _onSubmitToken,
-          child: const Text('ADD'),
+          onPressed: () => SmartDialog.dismiss(),
+          child: const Text('CANCEL',style: TextStyle(color: Colors.red)),
         ),
       ],
     );
@@ -96,5 +102,4 @@ class _EnterTokenDialogState extends State<_EnterTokenDialog> {
       SmartDialog.dismiss(result: _token);
     }
   }
-
 }

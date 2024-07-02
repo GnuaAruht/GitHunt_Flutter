@@ -9,7 +9,7 @@ class _FilterMenu extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         _LanguageFilterButton(),
-        SizedBox(width: defaultPadding),
+        SizedBox(width: defaultPadding / 2),
         _DateFilterButton()
       ],
     );
@@ -27,7 +27,7 @@ class _DateFilterButton extends StatelessWidget {
       color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       onSelected: (filter) {
-        // todo update selected filter
+        context.read<MainProvider>().updateDateFilter(filter);
       },
       itemBuilder: (BuildContext context) => DateFilter.values
           .map(
@@ -37,15 +37,21 @@ class _DateFilterButton extends StatelessWidget {
             ),
           )
           .toList(),
-      child: const _FilterBtnContainer(
+      child: _FilterBtnContainer(
         child: Row(
           children: [
-            Icon(
+            const Icon(
               Icons.calendar_month_outlined,
               color: Colors.black,
             ),
-            SizedBox(width: 8.0),
-            Text('Weekly')
+            const SizedBox(width: 8.0),
+            Selector<MainProvider, DateFilter>(
+              selector: (_, provider) => provider.dateFilter,
+              builder: (_, filter, __) => AnimatedSwitcher(
+                duration: const Duration(milliseconds: 200),
+                child: Text(key: UniqueKey(), filter.title),
+              ),
+            )
           ],
         ),
       ),
@@ -62,16 +68,22 @@ class _LanguageFilterButton extends StatelessWidget {
       onTap: () {
         LanguageFilterBottomSheet.show(context).then((language) {
           if (language != null) {
-            log(language.name, name: 'Selected Language');
+            context.read<MainProvider>().updateLanguage(language);
           }
         });
       },
-      child: const _FilterBtnContainer(
+      child: _FilterBtnContainer(
         child: Row(
           children: [
-            Icon(Icons.filter_alt_sharp, color: Colors.black),
-            SizedBox(width: 8.0),
-            Text('Kotlin')
+            const Icon(Icons.filter_alt_sharp, color: Colors.black),
+            const SizedBox(width: 8.0),
+            Selector<MainProvider, Language>(
+              selector: (_, provider) => provider.language,
+              builder: (_, language, __) => AnimatedSwitcher(
+                duration: const Duration(milliseconds: 200),
+                child: Text(key: UniqueKey(), language.title),
+              ),
+            )
           ],
         ),
       ),
@@ -80,16 +92,18 @@ class _LanguageFilterButton extends StatelessWidget {
 }
 
 class _FilterBtnContainer extends StatelessWidget {
-  final Widget child;
 
-  const _FilterBtnContainer({super.key, required this.child});
+  final Widget child;
+  final double minWidth;
+
+  const _FilterBtnContainer({super.key,this.minWidth = 100.0,required this.child});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 50.0,
       padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
-      constraints: const BoxConstraints(minWidth: 100.0),
+      constraints: BoxConstraints(minWidth: minWidth),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(defaultRadius),

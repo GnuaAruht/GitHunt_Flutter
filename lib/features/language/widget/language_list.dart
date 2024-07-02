@@ -8,7 +8,7 @@ class _LanguageListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final languages = context.select<LanguageProvider, List<LanguageModel>>(
+    final languages = context.select<LanguageProvider, List<Language>>(
         (provider) => provider.languages);
 
     return AnimatedSwitcher(
@@ -31,7 +31,7 @@ class _LanguageListWidget extends StatelessWidget {
 }
 
 class _LanguageItemWidget extends StatelessWidget {
-  final LanguageModel language;
+  final Language language;
 
   const _LanguageItemWidget({super.key, required this.language});
 
@@ -46,7 +46,7 @@ class _LanguageItemWidget extends StatelessWidget {
       leading: language.color != null
           ? CircleAvatar(radius: 8.0, backgroundColor: language.color!)
           : null,
-      title: Text(language.name),
+      title: Text(language.title),
     );
   }
 }

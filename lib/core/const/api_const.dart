@@ -5,4 +5,6 @@ abstract class ApiConst {
   static const tokenGenerateUrl =
       "https://github.com/settings/tokens/new?description=GitHunt&scopes=public_repo";
 
+  static const repositoryListUrl = "https://api.github.com/search/repositories";
+
 }

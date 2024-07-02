@@ -1,12 +1,13 @@
 part of '../main_page.dart';
 
 class _RepoListWidget extends StatelessWidget {
-  const _RepoListWidget({super.key});
+  final List<Repository> repositories;
+  const _RepoListWidget({super.key, required this.repositories});
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: 3,
+      itemCount: repositories.length,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,

@@ -4,15 +4,18 @@ import 'package:isar/isar.dart';
 part 'language_model.g.dart';
 
 @collection
-class LanguageModel {
+class Language {
+
+  static final allLanguage = Language(title: 'All Languages',value: "");
+
+  bool get isAllLanguage => value.isEmpty;
 
   Id id = Isar.autoIncrement;
-  final String name;
+  final String title;
+  final String value;
   final String? colorCode;
 
-  LanguageModel({required this.name, this.colorCode});
-
-  factory LanguageModel.allLanguage() => LanguageModel(name: 'All Languages');
+  Language({required this.title,required this.value, this.colorCode});
 
   @ignore
   Color? get color {

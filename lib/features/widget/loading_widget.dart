@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class LoadingWidget extends StatefulWidget {
-  const LoadingWidget({super.key});
+
+  factory LoadingWidget.small() => const LoadingWidget._(loadingSize: 68.0);
+
+  factory LoadingWidget.medium() => const LoadingWidget._(loadingSize: 80.0);
+
+  final double loadingSize;
+
+  const LoadingWidget._({super.key, required this.loadingSize});
 
   @override
   State<LoadingWidget> createState() => _LoadingWidgetState();
@@ -34,8 +41,8 @@ class _LoadingWidgetState extends State<LoadingWidget>
       turns: controller,
       child: Image.asset(
         'assets/loading.png',
-        width: 68.0,
-        height: 68.0,
+        width: widget.loadingSize,
+        height: widget.loadingSize,
         fit: BoxFit.fill,
       ),
     );

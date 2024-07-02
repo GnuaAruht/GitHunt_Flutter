@@ -21,8 +21,8 @@ const _maxExtent = 0.95;
 
 class LanguageFilterBottomSheet extends StatefulWidget {
 
-  static Future<LanguageModel?> show(BuildContext context) {
-    return showModalBottomSheet<LanguageModel>(
+  static Future<Language?> show(BuildContext context) {
+    return showModalBottomSheet<Language>(
       context: context,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
@@ -118,6 +118,7 @@ class _FilterContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final uiState = context
         .select<LanguageProvider, UIState>((provider) => provider.uiState);
 
@@ -126,7 +127,7 @@ class _FilterContent extends StatelessWidget {
       child: uiState.whenOrNull(
               success: () => _LanguageListWidget(controller: controller),
               error: (msg) => Center(child: Text(msg))) ??
-          const Center(child: LoadingWidget()),
+          Center(child: LoadingWidget.small()),
     );
   }
 }
