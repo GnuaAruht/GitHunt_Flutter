@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 abstract class LocalDataSource {
   Future<List<Language>> getLanguageList();
   Future<void> saveLanguageList(List<Language> languages);
+  Future<Language?> getLanguageByName(String language);
   Future<void> saveGitHubToken(String token);
   Future<String?> getGitHubToken();
 }
@@ -13,7 +14,6 @@ abstract class LocalDataSource {
 const _githubTokenKey = "githubToken";
 
 class LocalDataSourceImpl implements LocalDataSource {
-  
   late Future<Isar> _db;
   final _secureStorage = const FlutterSecureStorage();
 
@@ -35,6 +35,12 @@ class LocalDataSourceImpl implements LocalDataSource {
     return await isar.languages.where().findAll();
   }
 
+  @override
+  Future<Language?> getLanguageByName(String language) async {
+    final isar = await _db;
+    return isar.languages.filter().titleEqualTo(language).findFirst();
+  }
+
   Future<Isar> openDB() async {
     if (Isar.instanceNames.isEmpty) {
       final dir = await getApplicationDocumentsDirectory();
@@ -52,5 +58,4 @@ class LocalDataSourceImpl implements LocalDataSource {
   Future<String?> getGitHubToken() async {
     return await _secureStorage.read(key: _githubTokenKey);
   }
-
 }

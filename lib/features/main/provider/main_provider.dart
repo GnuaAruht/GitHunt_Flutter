@@ -26,29 +26,22 @@ class MainProvider extends ChangeNotifier {
 
   bool get firstLoading => _repositoriesData.isEmpty;
 
-  Duration get diffDuration {
+  late DateTime _toDate;
+  DateTime get _fromDate {
     switch (dateFilter) {
       case DateFilter.daily:
-        return Duration.zero;
+        return _toDate.copyWith(day: _toDate.day - 1);
       case DateFilter.weekly:
-        return const Duration(days: 7);
+        return _toDate.copyWith(day: _toDate.day - 7);
       case DateFilter.monthly:
-        return const Duration(days: 30);
+        return _toDate.copyWith(month: _toDate.month - 1);
       case DateFilter.yearly:
-        return const Duration(days: 365);
+        return _toDate.copyWith(year: _toDate.year - 1);
     }
   }
 
-  DateTime fromDate = DateTime.now();
-  DateTime get toDate => fromDate.subtract(diffDuration);
-
   MainProvider({required this.repository}) {
     _startDataLoading();
-  }
-
-  void _resetData() {
-    _repositoriesData.clear();
-    fromDate = DateTime.now();
   }
 
   void _startDataLoading() {
@@ -56,21 +49,28 @@ class MainProvider extends ChangeNotifier {
     _getRepositories();
   }
 
+  void _resetData() {
+    final now = DateTime.now();
+    _toDate = DateTime(now.year, now.month, now.day);
+    _repositoriesData.clear();
+  }
+
   Future<void> _getRepositories() async {
+
     _uiState = const UIState.loading();
     notifyListeners();
 
     final result = await repository.getRepositoryList(
       language: language,
-      fromDate: fromDate,
-      toDate: toDate,
+      fromDate: _fromDate,
+      toDate: _toDate,
     );
 
     result.when(
       success: (data) {
         _repositoriesData = List.of(_repositoriesData)..add(data);
         _uiState = const UIState.success();
-        fromDate = toDate.subtract(const Duration(days: 1));
+        _toDate = _fromDate;
         notifyListeners();
       },
       failure: (msg) {
@@ -100,6 +100,10 @@ class MainProvider extends ChangeNotifier {
 
   Future<void> saveGithubToken(String token) {
     return repository.saveGithubToken(token);
+  }
+
+  Future<Language?> getLanguageByName(String languageName) {
+    return repository.getLanguageByName(languageName);
   }
 
 }

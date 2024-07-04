@@ -27,7 +27,10 @@ class _DateFilterButton extends StatelessWidget {
       color: Colors.white,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       onSelected: (filter) {
-        context.read<MainProvider>().updateDateFilter(filter);
+        // add some delay for pop up dismiss
+        Future.delayed(const Duration(milliseconds: 280)).whenComplete(() {
+          context.read<MainProvider>().updateDateFilter(filter);
+        });
       },
       itemBuilder: (BuildContext context) => DateFilter.values
           .map(

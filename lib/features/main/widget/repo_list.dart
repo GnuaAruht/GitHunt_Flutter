@@ -2,59 +2,35 @@ part of '../main_page.dart';
 
 class _RepoListWidget extends StatelessWidget {
   final List<Repository> repositories;
+
   const _RepoListWidget({super.key, required this.repositories});
 
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      itemCount: repositories.length,
       shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
+      itemCount: repositories.length,
+      physics: const NeverScrollableScrollPhysics(),
       separatorBuilder: (context, index) => const SizedBox(height: 12.0),
-      itemBuilder: (context, index) => const _RepoItemWidget(),
-    );
-  }
-}
-
-class _RepoListTitleWidget extends StatelessWidget {
-  const _RepoListTitleWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      maxLines: 2,
-      overflow: TextOverflow.ellipsis,
-      text: const TextSpan(
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 20.0,
-          fontWeight: FontWeight.w600,
-        ),
-        text: '100 days ago\t',
-        children: [
-          TextSpan(
-            text: 'June 13, 2024 - June 20, 2024',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 14.0,
-              fontWeight: FontWeight.normal,
-            ),
-          )
-        ],
-      ),
+      itemBuilder: (context, index) {
+        return _RepoItemWidget(repo: repositories[index]);
+      },
     );
   }
 }
 
 class _RepoItemWidget extends StatelessWidget {
-  const _RepoItemWidget({super.key});
+  final Repository repo;
+
+  const _RepoItemWidget({super.key, required this.repo});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(defaultPadding),
+      constraints: const BoxConstraints(minHeight: 200.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(defaultRadius),
@@ -63,134 +39,151 @@ class _RepoItemWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Container(
-                width: 50.0,
-                height: 50.0,
-                decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(defaultRadius),
-                ),
-              ),
-              const SizedBox(width: 12.0),
-              const Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'User name',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text('12 June, 2024'),
-                  ],
-                ),
-              )
-            ],
-          ),
+          _buildTitleRow(),
           const SizedBox(height: 18.0),
-          const Text(
-            'Repository name',
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              color: Color(0xFF4A6EFB),
-              fontSize: 16.0,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          const SizedBox(height: 8.0),
-          const Text(
-            _repoDescription,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(fontWeight: FontWeight.w500),
-          ),
+          _buildRepoContent(),
           const SizedBox(height: 18.0),
-          const Row(
-            children: [
-              Expanded(child: _LanguageTag()),
-              Expanded(child: _StarTag()),
-              Expanded(child: _ForkTag()),
-              Expanded(child: _IssueTag()),
-            ],
-          )
+          _buildRepoTagRow()
         ],
       ),
     );
   }
-}
 
-class _IssueTag extends StatelessWidget {
-  const _IssueTag({super.key});
+  Widget _buildRepoContent() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          repo.name,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            color: Color(0xFF4A6EFB),
+            fontSize: 16.0,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(height: 8.0),
+        Text(
+          repo.description ?? 'No description given.',
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(fontWeight: FontWeight.w500),
+        ),
+      ],
+    );
+  }
 
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildRepoTagRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        if (repo.languageName != null) _LanguageTag(languageName: repo.languageName),
+        _StarTag(count: repo.stargazersCount ?? 0),
+        _ForkTag(count: repo.forks ?? 0),
+        _IssueTag(count: repo.openIssues ?? 0),
+      ],
+    );
+  }
+
+  Widget _buildTitleRow() {
     return Row(
       children: [
-        SvgPicture.asset(
-          "assets/svg/issue.svg",
-          colorFilter: const ColorFilter.mode(Colors.black54, BlendMode.srcIn),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(defaultRadius),
+          child: CachedNetworkImage(
+            imageUrl: repo.owner.avatarUrl,
+            width: 50.0,
+            height: 50.0,
+            placeholder: (context, url) => const ColoredBox(color: Colors.grey),
+            errorWidget: (_, url, __) => const ColoredBox(color: Colors.grey),
+          ),
         ),
-        const SizedBox(width: 6.0),
-        const Text("12")
+        const SizedBox(width: 12.0),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                repo.owner.name,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              Text(repo.created.toTitleFormat()),
+            ],
+          ),
+        )
       ],
     );
   }
 }
 
-class _ForkTag extends StatelessWidget {
-  const _ForkTag({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SvgPicture.asset(
-          "assets/svg/fork.svg",
-          colorFilter: const ColorFilter.mode(Colors.black54, BlendMode.srcIn),
-        ),
-        const SizedBox(width: 6.0),
-        const Text("12")
-      ],
-    );
-  }
+class _StarTag extends _Tag {
+  const _StarTag({super.key, required super.count})
+      : super(assetSvgUrl: "assets/svg/star.svg");
 }
 
-class _StarTag extends StatelessWidget {
-  const _StarTag({super.key});
+class _IssueTag extends _Tag {
+  const _IssueTag({super.key, required super.count})
+      : super(assetSvgUrl: "assets/svg/issue.svg");
+}
+
+class _ForkTag extends _Tag {
+  const _ForkTag({super.key, required super.count})
+      : super(assetSvgUrl: "assets/svg/fork.svg");
+}
+
+class _Tag extends StatelessWidget {
+  final String assetSvgUrl;
+  final int count;
+
+  const _Tag({
+    super.key,
+    required this.assetSvgUrl,
+    required this.count,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         SvgPicture.asset(
-          "assets/svg/star.svg",
+          assetSvgUrl,
           colorFilter: const ColorFilter.mode(Colors.black54, BlendMode.srcIn),
         ),
         const SizedBox(width: 6.0),
-        const Text("12")
+        Text(NumberFormat('#,###').format(count))
       ],
     );
   }
 }
 
 class _LanguageTag extends StatelessWidget {
-  const _LanguageTag({super.key});
+  final String? languageName;
+
+  const _LanguageTag({super.key, required this.languageName});
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    final mainProvider = context.read<MainProvider>();
+    return FutureBuilder<Language?>(
+      future: mainProvider.getLanguageByName(languageName ?? ''),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) return _buildContent(snapshot.data!);
+        return const SizedBox.shrink();
+      },
+    );
+  }
+
+  Widget _buildContent(Language language) {
+    return Row(
       children: [
-        CircleAvatar(radius: 6.0, backgroundColor: Colors.teal),
-        SizedBox(width: 6.0),
-        Text('Dart')
+        CircleAvatar(radius: 6.0, backgroundColor: language.color),
+        const SizedBox(width: 4.0),
+        Text(language.title)
       ],
     );
   }
-}
 
-const _repoDescription =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at odio eros. Duis sagittis dapibus fermentum. Maecenas cursus ipsum sit amet lacinia ornare.";
+}

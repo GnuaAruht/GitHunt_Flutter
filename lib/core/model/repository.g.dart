@@ -15,6 +15,7 @@ Repository _$RepositoryFromJson(Map<String, dynamic> json) => Repository(
       openIssues: (json['open_issues'] as num?)?.toInt(),
       owner: RepoOwner.fromJson(json['owner'] as Map<String, dynamic>),
       created: DateTime.parse(json['created_at'] as String),
+      languageName: json['language'] as String?,
     );
 
 Map<String, dynamic> _$RepositoryToJson(Repository instance) =>
@@ -27,6 +28,7 @@ Map<String, dynamic> _$RepositoryToJson(Repository instance) =>
       'open_issues': instance.openIssues,
       'owner': instance.owner.toJson(),
       'created_at': instance.created.toIso8601String(),
+      'language': instance.languageName,
     };
 
 RepoOwner _$RepoOwnerFromJson(Map<String, dynamic> json) => RepoOwner(

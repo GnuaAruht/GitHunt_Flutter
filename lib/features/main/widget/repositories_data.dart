@@ -9,11 +9,10 @@ class _RepositoriesData extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const _RepoListTitleWidget(),
+        _RepoListTitleWidget(fromDate: data.fromDate, toDate: data.toDate),
         const SizedBox(height: defaultPadding),
         _RepoListWidget(repositories: data.repositories),
       ],
     );
   }
-
 }

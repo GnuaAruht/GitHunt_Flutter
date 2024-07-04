@@ -1,3 +1,4 @@
+import 'package:githunt_flutter/core/model/language_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'repository.g.dart';
@@ -17,6 +18,8 @@ class Repository {
   final RepoOwner owner;
   @JsonKey(name: 'created_at')
   final DateTime created;
+  @JsonKey(name: 'language')
+  final String? languageName;
 
   Repository({
     required this.htmlUrl,
@@ -27,6 +30,7 @@ class Repository {
     required this.openIssues,
     required this.owner,
     required this.created,
+    required this.languageName,
   });
 
   factory Repository.fromJson(Map<String,dynamic> json) => _$RepositoryFromJson(json);

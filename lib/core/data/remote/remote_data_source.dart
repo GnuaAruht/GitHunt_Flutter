@@ -5,7 +5,6 @@ import 'package:githunt_flutter/core/model/language_model.dart';
 
 abstract class RemoteDataSource {
   Future<Response> getLanguagesContent();
-
   Future<Response> getRepositoryList(
       Language language, DateTime fromDate, DateTime toDate);
 }

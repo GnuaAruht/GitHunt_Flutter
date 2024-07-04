@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:githunt_flutter/core/data/local/local_data_source.dart';
 import 'package:githunt_flutter/core/model/repository.dart';
@@ -10,11 +9,9 @@ import 'package:githunt_flutter/core/model/language_model.dart';
 
 abstract class AppRepository {
   Future<DataState<List<Language>>> getLanguageList();
-
+  Future<Language?> getLanguageByName(String languageName);
   Future<void> saveGithubToken(String token);
-
   Future<String?> getGitHubToken();
-
   Future<DataState<RepositoriesData>> getRepositoryList({
     required Language language,
     required DateTime fromDate,
@@ -93,4 +90,10 @@ class AppRepositoryImpl implements AppRepository {
     });
     return languages;
   }
+
+  @override
+  Future<Language?> getLanguageByName(String languageName) {
+    return local.getLanguageByName(languageName);
+  }
+
 }

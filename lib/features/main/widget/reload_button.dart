@@ -7,6 +7,10 @@ class _ReloadButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final dateFilter = context
+        .select<MainProvider, DateFilter>((provider) => provider.dateFilter);
+
     return InkWell(
       onTap: onPressed,
       child: Container(
@@ -16,14 +20,14 @@ class _ReloadButton extends StatelessWidget {
           color: Colors.blue,
           boxShadow: defaultBoxShadow,
         ),
-        child: const Row(
+        child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.sync, color: Colors.white),
-            SizedBox(width: 8.0),
+            const Icon(Icons.sync, color: Colors.white),
+            const SizedBox(width: 8.0),
             Text(
-              'Reload next week',
-              style: TextStyle(
+              'Load next ${dateFilter.status}',
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.w600,
               ),
