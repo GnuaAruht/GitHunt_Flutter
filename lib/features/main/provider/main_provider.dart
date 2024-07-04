@@ -24,7 +24,9 @@ class MainProvider extends ChangeNotifier {
   List<RepositoriesData> _repositoriesData = [];
   List<RepositoriesData> get repositoriesData => _repositoriesData;
 
-  bool get firstLoading => _repositoriesData.isEmpty;
+  bool get firstLoading {
+    return _repositoriesData.isEmpty && _uiState is UIStateLoading;
+  }
 
   late DateTime _toDate;
   DateTime get _fromDate {
@@ -78,6 +80,7 @@ class MainProvider extends ChangeNotifier {
         notifyListeners();
       },
     );
+
   }
 
   void updateLanguage(Language language) {

@@ -11,9 +11,9 @@ class _MainDataList extends StatelessWidget {
 
     return AnimatedSwitcher(
       duration: const Duration(milliseconds: 200),
-      child: dataList.isNotEmpty
-          ? _buildDataList(dataList)
-          : const Center(child: Text('No data list')),
+      child: dataList.isNotEmpty ?
+          _buildDataList(dataList) :
+          _buildNoDataWidget(),
     );
   }
 
@@ -29,4 +29,14 @@ class _MainDataList extends StatelessWidget {
       },
     );
   }
+
+  Widget _buildNoDataWidget() {
+    return Container(
+      width: double.infinity,
+      height: 200.0,
+      alignment: Alignment.center,
+      child: const Text('No data list'),
+    );
+  }
+
 }
