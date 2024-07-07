@@ -35,6 +35,16 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
         ],
       ),
+      actions: [
+        IconButton(
+          onPressed: () {
+
+            context.go(RouteConst.settingPath);
+
+          },
+          icon: const Icon(Icons.more_vert),
+        )
+      ],
       // bottom: PreferredSize(
       //   preferredSize: const Size.fromHeight(50.0),
       //   child: Container(

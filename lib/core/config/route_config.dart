@@ -3,7 +3,8 @@ import 'package:githunt_flutter/core/config/injector.dart';
 import 'package:githunt_flutter/core/const/route_const.dart';
 import 'package:githunt_flutter/features/main/main_page.dart';
 import 'package:githunt_flutter/features/main/provider/main_provider.dart';
-import 'package:githunt_flutter/features/splash_page/splash_page.dart';
+import 'package:githunt_flutter/features/setting/setting_page.dart';
+import 'package:githunt_flutter/features/splash/splash_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -15,16 +16,19 @@ final GoRouter appRouter = GoRouter(
       builder: (_, __) => const SplashPage(),
     ),
     GoRoute(
-      path: RouteConst.mainPath,
-      pageBuilder: (_, __) {
-        return _FadeTransitionPage(
-          child: ChangeNotifierProvider(
+        path: RouteConst.mainPath,
+        builder: (_, __) {
+          return ChangeNotifierProvider(
             create: (_) => MainProvider(repository: injector.get()),
             child: const MainPage(),
+          );
+        },
+        routes: [
+          GoRoute(
+            path: RouteConst.setting,
+            builder: (_, __) => const SettingPage(),
           ),
-        );
-      },
-    ),
+        ]),
   ],
 );
 
