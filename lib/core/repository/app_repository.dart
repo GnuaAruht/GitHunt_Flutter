@@ -37,7 +37,8 @@ class AppRepositoryImpl implements AppRepository {
     required DateTime toDate,
   }) async {
     try {
-      final result = await remote.getRepositoryList(language, fromDate, toDate);
+      final String? pat = await local.getGitHubToken();
+      final result = await remote.getRepositoryList(pat,language, fromDate, toDate);
       final repositoriesData = RepositoriesData(
         fromDate: fromDate,
         toDate: toDate,

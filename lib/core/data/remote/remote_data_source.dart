@@ -5,6 +5,7 @@ import 'package:githunt_flutter/core/model/language_model.dart';
 
 abstract class RemoteDataSource {
   Future<Response> getRepositoryList(
+    String? pat,
     Language language,
     DateTime fromDate,
     DateTime toDate,
@@ -18,18 +19,23 @@ class RemoteDataSourceImpl implements RemoteDataSource {
 
   @override
   Future<Response> getRepositoryList(
+    String? pat,
     Language language,
     DateTime fromDate,
     DateTime toDate,
   ) {
 
-    // todo add token if user added it
-
     final langQuery = language.isAllLang ? "" : "language:${language.title} ";
     final dateQuery = "created:${fromDate.toQuery()}..${toDate.toQuery()}";
 
+    Options? options;
+    if(pat != null) {
+      options = Options(headers: {"Authorization": "token $pat"});
+    }
+
     return client.get(
       ApiConst.repositoryListUrl,
+      options: options,
       queryParameters: {
         "q": langQuery + dateQuery,
         "sort": "stars",
