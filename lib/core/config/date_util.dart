@@ -8,7 +8,7 @@ extension DateUtilExt on DateTime {
     return DateFormat.yMMMd().format(this);
   }
 
-  String toQueryFormat() {
+  String toQuery() {
     return DateFormat("yyy-MM-dd").format(this);
   }
 

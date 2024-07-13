@@ -4,9 +4,11 @@ import 'package:githunt_flutter/core/const/api_const.dart';
 import 'package:githunt_flutter/core/model/language_model.dart';
 
 abstract class RemoteDataSource {
-  Future<Response> getLanguagesContent();
   Future<Response> getRepositoryList(
-      Language language, DateTime fromDate, DateTime toDate);
+    Language language,
+    DateTime fromDate,
+    DateTime toDate,
+  );
 }
 
 class RemoteDataSourceImpl implements RemoteDataSource {
@@ -15,31 +17,25 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   RemoteDataSourceImpl(this.client);
 
   @override
-  Future<Response> getLanguagesContent() {
-    return client.get(ApiConst.languageColorUrl);
-  }
-
-  @override
   Future<Response> getRepositoryList(
     Language language,
     DateTime fromDate,
     DateTime toDate,
   ) {
 
-    final dateRangeFilter =
-        "created:${fromDate.toQueryFormat()}..${toDate.toQueryFormat()}";
+    // todo add token if user added it
 
-    final query = language.isAllLanguage
-        ? dateRangeFilter
-        : "language:${language.title}+$dateRangeFilter";
+    final langQuery = language.isAllLang ? "" : "language:${language.title} ";
+    final dateQuery = "created:${fromDate.toQuery()}..${toDate.toQuery()}";
 
     return client.get(
       ApiConst.repositoryListUrl,
       queryParameters: {
-        "q": query,
-        // "sort": "stars",
-        // "order": "desc"
+        "q": langQuery + dateQuery,
+        "sort": "stars",
+        "order": "desc"
       },
     );
   }
+
 }
