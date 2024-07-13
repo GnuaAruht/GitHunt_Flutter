@@ -1,0 +1,1526 @@
+[
+  {
+    "title": "All Languages",
+    "value": "",
+    "color": ""
+  },
+  {
+    "title": "ABAP",
+    "value": "ABAP",
+    "color" : "#E8274B"
+  },
+  {
+    "title": "ActionScript",
+    "value": "ActionScript",
+    "color" : "#882B0F"
+  },
+  {
+    "title": "Ada",
+    "value": "Ada",
+    "color" : "#02f88c"
+  },
+  {
+    "title": "Agda",
+    "value": "Agda",
+    "color" : "#315665"
+  },
+  {
+    "title": "AGS",
+    "value": "AGS",
+    "color" : "#B9D9FF"
+  },
+  {
+    "title": "Alloy",
+    "value": "Alloy",
+    "color" : "#64C800"
+  },
+  {
+    "title": "AMPL",
+    "value": "AMPL",
+    "color" : "#E6EFBB"
+  },
+  {
+    "title": "ANTLR",
+    "value": "ANTLR",
+    "color" : "#9DC3FF"
+  },
+  {
+    "title": "ApacheConf",
+    "value": "ApacheConf",
+    "color" : "#d12127"
+  },
+  {
+    "title": "Apex",
+    "value": "Apex",
+    "color" : "#1797c0"
+  },
+  {
+    "title": "API",
+    "value": "API",
+    "color" : "#2ACCA8"
+  },
+  {
+    "title": "APL",
+    "value": "APL",
+    "color" : "#5A8164"
+  },
+  {
+    "title": "AppleScript",
+    "value": "AppleScript",
+    "color" : "#101F1F"
+  },
+  {
+    "title": "Arc",
+    "value": "Arc",
+    "color": "#aa2afe"
+  },
+  {
+    "title": "Arduino",
+    "value": "Arduino",
+    "color" : ""
+  },
+  {
+    "title": "ASP",
+    "value": "ASP",
+    "color": "#9400ff"
+  },
+  {
+    "title": "AspectJ",
+    "value": "AspectJ",
+    "color": "#a957b0"
+  },
+  {
+    "title": "Assembly",
+    "value": "Assembly",
+    "color": "#0B3D91"
+  },
+  {
+    "title": "ATS",
+    "value": "ATS",
+    "color": "#1ac620"
+  },
+  {
+    "title": "Augeas",
+    "value": "Augeas",
+    "color": "#9CC134"
+  },
+  {
+    "title": "AutoHotkey",
+    "value": "AutoHotkey",
+    "color": "#6594b9"
+  },
+  {
+    "title": "AutoIt",
+    "value": "AutoIt",
+    "color": "#1C3552"
+  },
+  {
+    "title": "Awk",
+    "value": "Awk",
+    "color": "#c30e9b"
+  },
+  {
+    "title": "Batchfile",
+    "value": "Batchfile",
+    "color": "#C1F12E"
+  },
+  {
+    "title": "Befunge",
+    "value": "Befunge",
+    "color" : ""
+  },
+  {
+    "title": "Bison",
+    "value": "Bison",
+    "color": "#6A463F"
+  },
+  {
+    "title": "BitBake",
+    "value": "BitBake",
+    "color": "#00bce4"
+  },
+  {
+    "title": "BlitzBasic",
+    "value": "BlitzBasic",
+    "color": "#00FFAE"
+  },
+  {
+    "title": "BlitzMax",
+    "value": "BlitzMax",
+    "color": "#cd6400"
+  },
+  {
+    "title": "Bluespec",
+    "value": "Bluespec",
+    "color": "#12223c"
+  },
+  {
+    "title": "Boo",
+    "value": "Boo",
+    "color": "#d4bec1"
+  },
+  {
+    "title": "Brainfuck",
+    "value": "Brainfuck",
+    "color": "#2F2530"
+  },
+  {
+    "title": "Brightscript",
+    "value": "Brightscript",
+    "color": "#662D91"
+  },
+  {
+    "title": "Bro",
+    "value": "Bro",
+    "color": "#ffd539"
+  },
+  {
+    "title": "C",
+    "value": "C",
+    "color": "#555555"
+  },
+  {
+    "title": "CSharp",
+    "value": "CSharp",
+    "color": "#178600"
+  },
+  {
+    "title": "C++",
+    "value": "C++",
+    "color": "#f34b7d"
+  },
+  {
+    "title": "Cap",
+    "value": "Cap",
+    "color": "#f34b7d"
+  },
+  {
+    "title": "CartoCSS",
+    "value": "CartoCSS",
+    "color" : ""
+  },
+  {
+    "title": "Ceylon",
+    "value": "Ceylon",
+    "color": "#dfa535"
+  },
+  {
+    "title": "Chapel",
+    "value": "Chapel",
+    "color": "#8dc63f"
+  },
+  {
+    "title": "Charity",
+    "value": "Charity",
+    "color" : ""
+  },
+  {
+    "title": "ChucK",
+    "value": "ChucK",
+    "color": "#3f8000"
+  },
+  {
+    "title": "Cirru",
+    "value": "Cirru",
+    "color": "#ccccff"
+  },
+  {
+    "title": "Clarion",
+    "value": "Clarion",
+    "color": "#db901e"
+  },
+  {
+    "title": "Clean",
+    "value": "Clean",
+    "color": "#3F85AF"
+  },
+  {
+    "title": "Click",
+    "value": "Click",
+    "color": "#E4E6F3"
+  },
+  {
+    "title": "CLIPS",
+    "value": "CLIPS",
+    "color": "#00A300"
+  },
+  {
+    "title": "Clojure",
+    "value": "Clojure",
+    "color": "#db5855"
+  },
+  {
+    "title": "CMake",
+    "value": "CMake",
+    "color": "#DA3434"
+  },
+  {
+    "title": "COBOL",
+    "value": "COBOL",
+    "color" : ""
+  },
+  {
+    "title": "CoffeeScript",
+    "value": "CoffeeScript",
+    "color": "#244776"
+  },
+  {
+    "title": "ColdFusion",
+    "value": "ColdFusion",
+    "color": "#ed2cd6"
+  },
+  {
+    "title": "Common",
+    "value": "Common",
+    "color": "#3fb68b"
+  },
+  {
+    "title": "Component",
+    "value": "Component",
+    "color": "#B0CE4E"
+  },
+  {
+    "title": "Cool",
+    "value": "Cool",
+    "color" : ""
+  },
+  {
+    "title": "Coq",
+    "value": "Coq",
+    "color": "#d0b68c"
+  },
+  {
+    "title": "Crystal",
+    "value": "Crystal",
+    "color": "#000100"
+  },
+  {
+    "title": "CSS",
+    "value": "CSS",
+    "color": "#563d7c"
+  },
+  {
+    "title": "Cucumber",
+    "value": "Cucumber",
+    "color": "#5B2063"
+  },
+  {
+    "title": "Cuda",
+    "value": "Cuda",
+    "color": "#3A4E3A"
+  },
+  {
+    "title": "Cycript",
+    "value": "Cycript"
+  },
+  {
+    "title": "D",
+    "value": "D",
+    "color": "#ba595e"
+  },
+  {
+    "title": "Darcs",
+    "value": "Darcs",
+    "color": "#8eff23"
+  },
+  {
+    "title": "Dart",
+    "value": "Dart",
+    "color": "#00B4AB"
+  },
+  {
+    "title": "Diff",
+    "value": "Diff",
+    "color" : ""
+  },
+  {
+    "title": "DIGITAL",
+    "value": "DIGITAL",
+    "color" : ""
+  },
+  {
+    "title": "DM",
+    "value": "DM",
+    "color": "#447265"
+  },
+  {
+    "title": "Dogescript",
+    "value": "Dogescript",
+    "color": "#cca760"
+  },
+  {
+    "title": "DTrace",
+    "value": "DTrace",
+    "color" : ""
+  },
+  {
+    "title": "Dylan",
+    "value": "Dylan",
+    "color": "#6c616e"
+  },
+  {
+    "title": "E",
+    "value": "E",
+    "color": "#ccce35"
+  },
+  {
+    "title": "Eagle",
+    "value": "Eagle",
+    "color" : ""
+  },
+  {
+    "title": "eC",
+    "value": "eC",
+    "color" : ""
+  },
+  {
+    "title": "ECL",
+    "value": "ECL",
+    "color": "#8a1267"
+  },
+  {
+    "title": "Eiffel",
+    "value": "Eiffel",
+    "color": "#4d6977"
+  },
+  {
+    "title": "Elixir",
+    "value": "Elixir",
+    "color": "#6e4a7e"
+  },
+  {
+    "title": "Elm",
+    "value": "Elm",
+    "color": "#60B5CC"
+  },
+  {
+    "title": "Emacs",
+    "value": "Emacs",
+    "color": "#c065db"
+  },
+  {
+    "title": "EmberScript",
+    "value": "EmberScript",
+    "color": "#FFF4F3"
+  },
+  {
+    "title": "Erlang",
+    "value": "Erlang",
+    "color": "#B83998"
+  },
+  {
+    "title": "F#",
+    "value": "F#",
+    "color": "#b845fc"
+  },
+  {
+    "title": "Factor",
+    "value": "Factor",
+    "color": "#636746"
+  },
+  {
+    "title": "Fancy",
+    "value": "Fancy",
+    "color": "#7b9db4"
+  },
+  {
+    "title": "Fantom",
+    "value": "Fantom",
+    "color": "#14253c"
+  },
+  {
+    "title": "FLUX",
+    "value": "FLUX",
+    "color": "#88ccff"
+  },
+  {
+    "title": "Forth",
+    "value": "Forth",
+    "color": "#341708"
+  },
+  {
+    "title": "FORTRAN",
+    "value": "FORTRAN",
+    "color": "#4d41b1"
+  },
+  {
+    "title": "FreeMarker",
+    "value": "FreeMarker",
+    "color": "#0050b2"
+  },
+  {
+    "title": "Frege",
+    "value": "Frege",
+    "color": "#00cafe"
+  },
+  {
+    "title": "Game",
+    "value": "Game",
+    "color": "#71b417"
+  },
+  {
+    "title": "GAMS",
+    "value": "GAMS",
+    "color": "#f49a22"
+  },
+  {
+    "title": "GAP",
+    "value": "GAP",
+    "color": "#0000cc"
+  },
+  {
+    "title": "GDScript",
+    "value": "GDScript",
+    "color": "#355570"
+  },
+  {
+    "title": "Genshi",
+    "value": "Genshi",
+    "color": "#951531"
+  },
+  {
+    "title": "Gettext",
+    "value": "Gettext",
+    "color" : ""
+  },
+  {
+    "title": "GLSL",
+    "value": "GLSL",
+    "color": "#5686a5"
+  },
+  {
+    "title": "Glyph",
+    "value": "Glyph",
+    "color": "#c1ac7f"
+  },
+  {
+    "title": "Gnuplot",
+    "value": "Gnuplot",
+    "color": "#f0a9f0"
+  },
+  {
+    "title": "Go",
+    "value": "Go",
+    "color": "#00ADD8"
+  },
+  {
+    "title": "Golo",
+    "value": "Golo",
+    "color": "#88562A"
+  },
+  {
+    "title": "Gosu",
+    "value": "Gosu",
+    "color": "#82937f"
+  },
+  {
+    "title": "Grace",
+    "value": "Grace",
+    "color": "#615f8b"
+  },
+  {
+    "title": "Grammatical",
+    "value": "Grammatical",
+    "color": "#ff0000"
+  },
+  {
+    "title": "Groff",
+    "value": "Groff",
+    "color" : ""
+  },
+  {
+    "title": "Groovy",
+    "value": "Groovy",
+    "color": "#4298b8"
+  },
+  {
+    "title": "Hack",
+    "value": "Hack",
+    "color": "#878787"
+  },
+  {
+    "title": "Handlebars",
+    "value": "Handlebars",
+    "color": "#f7931e"
+  },
+  {
+    "title": "Harbour",
+    "value": "Harbour",
+    "color": "#0e60e3"
+  },
+  {
+    "title": "Haskell",
+    "value": "Haskell",
+    "color": "#5e5086"
+  },
+  {
+    "title": "Haxe",
+    "value": "Haxe",
+    "color": "#df7900"
+  },
+  {
+    "title": "HCL",
+    "value": "HCL",
+    "color": "#844FBA"
+  },
+  {
+    "title": "HLSL",
+    "value": "HLSL",
+    "color": "#aace60"
+  },
+  {
+    "title": "HTML",
+    "value": "HTML",
+    "color": "#e34c26"
+  },
+  {
+    "title": "Hy",
+    "value": "Hy",
+    "color": "#7790B2"
+  },
+  {
+    "title": "HyPhy",
+    "value": "HyPhy",
+    "color" : ""
+  },
+  {
+    "title": "IDL",
+    "value": "IDL",
+    "color": "#a3522f"
+  },
+  {
+    "title": "Idris",
+    "value": "Idris",
+    "color": "#b30000"
+  },
+  {
+    "title": "IGOR",
+    "value": "IGOR",
+    "color": "#0000cc"
+  },
+  {
+    "title": "Inform",
+    "value": "Inform",
+    "color": ""
+  },
+  {
+    "title": "Inno",
+    "value": "Inno",
+    "color": "#264b99"
+  },
+  {
+    "title": "Io",
+    "value": "Io",
+    "color": "#a9188d"
+  },
+  {
+    "title": "Ioke",
+    "value": "Ioke",
+    "color": "#078193"
+  },
+  {
+    "title": "Isabelle",
+    "value": "Isabelle",
+    "color": "#FEFE00"
+  },
+  {
+    "title": "J",
+    "value": "J",
+    "color": "#9EEDFF"
+  },
+  {
+    "title": "Jasmin",
+    "value": "Jasmin",
+    "color": "#d03600"
+  },
+  {
+    "title": "Java",
+    "value": "Java",
+    "color": "#b07219"
+  },
+  {
+    "title": "JavaScript",
+    "value": "JavaScript",
+    "color": "#f1e05a"
+  },
+  {
+    "title": "JFlex",
+    "value": "JFlex",
+    "color": "#DBCA00"
+  },
+  {
+    "title": "JSONiq",
+    "value": "JSONiq",
+    "color": "#40d47e"
+  },
+  {
+    "title": "Julia",
+    "value": "Julia",
+    "color": "#a270ba"
+  },
+  {
+    "title": "Jupyter",
+    "value": "Jupyter-notebook",
+    "color": "#DA5B0B"
+  },
+  {
+    "title": "KiCad",
+    "value": "KiCad",
+    "color": "#2f4aab"
+  },
+  {
+    "title": "Kit",
+    "value": "Kit",
+    "color": ""
+  },
+  {
+    "title": "Kotlin",
+    "value": "Kotlin",
+    "color": "#A97BFF"
+  },
+  {
+    "title": "KRL",
+    "value": "KRL",
+    "color": "#28430A"
+  },
+  {
+    "title": "LabVIEW",
+    "value": "LabVIEW",
+    "color": "#fede06"
+  },
+  {
+    "title": "Lasso",
+    "value": "Lasso",
+    "color": "#999999"
+  },
+  {
+    "title": "Lean",
+    "value": "Lean",
+    "color": ""
+  },
+  {
+    "title": "Lex",
+    "value": "Lex",
+    "color": "#DBCA00"
+  },
+  {
+    "title": "LilyPond",
+    "value": "LilyPond",
+    "color": "#9ccc7c"
+  },
+  {
+    "title": "Limbo",
+    "value": "Limbo",
+    "color": ""
+  },
+  {
+    "title": "Liquid",
+    "value": "Liquid",
+    "color": "#67b8de"
+  },
+  {
+    "title": "LiveScript",
+    "value": "LiveScript",
+    "color": "#499886"
+  },
+  {
+    "title": "LLVM",
+    "value": "LLVM",
+    "color": "#185619"
+  },
+  {
+    "title": "Logos",
+    "value": "Logos",
+    "color": ""
+  },
+  {
+    "title": "Logtalk",
+    "value": "Logtalk",
+    "color": "#295b9a"
+  },
+  {
+    "title": "LOLCODE",
+    "value": "LOLCODE",
+    "color": "#cc9900"
+  },
+  {
+    "title": "LookML",
+    "value": "LookML",
+    "color": "#652B81"
+  },
+  {
+    "title": "LoomScript",
+    "value": "LoomScript",
+    "color": ""
+  },
+  {
+    "title": "LSL",
+    "value": "LSL",
+    "color": "#3d9970"
+  },
+  {
+    "title": "Lua",
+    "value": "Lua",
+    "color": "#000080"
+  },
+  {
+    "title": "M",
+    "value": "M",
+    "color": ""
+  },
+  {
+    "title": "M4",
+    "value": "M4",
+    "color": ""
+  },
+  {
+    "title": "Makefile",
+    "value": "Makefile",
+    "color": "#427819"
+  },
+  {
+    "title": "Mako",
+    "value": "Mako",
+    "color": "#7e858d"
+  },
+  {
+    "title": "Markdown",
+    "value": "Markdown",
+    "color": "#083fa1"
+  },
+  {
+    "title": "Mask",
+    "value": "Mask",
+    "color": "#f97732"
+  },
+  {
+    "title": "Mathematica",
+    "value": "Mathematica",
+    "color": "#dd1100"
+  },
+  {
+    "title": "Matlab",
+    "value": "Matlab",
+    "color": "#e16737"
+  },
+  {
+    "title": "Max",
+    "value": "Max",
+    "color": ""
+  },
+  {
+    "title": "MAXScript",
+    "value": "MAXScript",
+    "color": "#00a6a6"
+  },
+  {
+    "title": "Mercury",
+    "value": "Mercury",
+    "color": "#ff2b2b"
+  },
+  {
+    "title": "Metal",
+    "value": "Metal",
+    "color": "#8f14e9"
+  },
+  {
+    "title": "MiniD",
+    "value": "MiniD",
+    "color": ""
+  },
+  {
+    "title": "Mirah",
+    "value": "Mirah",
+    "color": "#c7a938"
+  },
+  {
+    "title": "MLIR",
+    "value": "MLIR",
+    "color": "#5EC8DB"
+  },
+  {
+    "title": "Modelica",
+    "value": "Modelica",
+    "color": "#de1d31"
+  },
+  {
+    "title": "Modula",
+    "value": "Modula",
+    "color": "#10253f"
+  },
+  {
+    "title": "Module",
+    "value": "Module",
+    "color": ""
+  },
+  {
+    "title": "Monkey",
+    "value": "Monkey",
+    "color": ""
+  },
+  {
+    "title": "Moocode",
+    "value": "Moocode",
+    "color": ""
+  },
+  {
+    "title": "MoonScript",
+    "value": "MoonScript",
+    "color": "#ff4585"
+  },
+  {
+    "title": "MTML",
+    "value": "MTML",
+    "color": "#b7e1f4"
+  },
+  {
+    "title": "mupad",
+    "value": "mupad",
+    "color": "#244963"
+  },
+  {
+    "title": "Myghty",
+    "value": "Myghty",
+    "color": ""
+  },
+  {
+    "title": "NCL",
+    "value": "NCL",
+    "color": "#28431f"
+  },
+  {
+    "title": "Nemerle",
+    "value": "Nemerle",
+    "color": "#3d3c6e"
+  },
+  {
+    "title": "nesC",
+    "value": "nesC",
+    "color": "#94B0C7"
+  },
+  {
+    "title": "NetLinx",
+    "value": "NetLinx",
+    "color": "#0aa0ff"
+  },
+  {
+    "title": "NetLogo",
+    "value": "NetLogo",
+    "color": "#ff6375"
+  },
+  {
+    "title": "NewLisp",
+    "value": "NewLisp",
+    "color": "#87AED7"
+  },
+  {
+    "title": "Nginx",
+    "value": "Nginx",
+    "color": "#009639"
+  },
+  {
+    "title": "Nim",
+    "value": "Nim",
+    "color": "#ffc200"
+  },
+  {
+    "title": "Nit",
+    "value": "Nit",
+    "color": "#009917"
+  },
+  {
+    "title": "Nix",
+    "value": "Nix",
+    "color": "#7e7eff"
+  },
+  {
+    "title": "NSIS",
+    "value": "NSIS",
+    "color": ""
+  },
+  {
+    "title": "Nu",
+    "value": "Nu",
+    "color": "#c9df40"
+  },
+  {
+    "title": "Objective-C",
+    "value": "Objective-C",
+    "color": "#438eff"
+  },
+  {
+    "title": "OCaml",
+    "value": "OCaml",
+    "color": "#ef7a08"
+  },
+  {
+    "title": "Omgrofl",
+    "value": "Omgrofl",
+    "color": "#cabbff"
+  },
+  {
+    "title": "ooc",
+    "value": "ooc",
+    "color": "#b0b77e"
+  },
+  {
+    "title": "Opa",
+    "value": "Opa",
+    "color": ""
+  },
+  {
+    "title": "Opal",
+    "value": "Opal",
+    "color": "#f7ede0"
+  },
+  {
+    "title": "OpenEdge",
+    "value": "OpenEdge",
+    "color": "#5ce600"
+  },
+  {
+    "title": "OpenSCAD",
+    "value": "OpenSCAD",
+    "color": "#e5cd45"
+  },
+  {
+    "title": "Ox",
+    "value": "Ox",
+    "color": ""
+  },
+  {
+    "title": "Oxygene",
+    "value": "Oxygene",
+    "color": "#cdd0e3"
+  },
+  {
+    "title": "Oz",
+    "value": "Oz",
+    "color": "#fab738"
+  },
+  {
+    "title": "Pan",
+    "value": "Pan",
+    "color": "#cc0000"
+  },
+  {
+    "title": "Papyrus",
+    "value": "Papyrus",
+    "color": "#6600cc"
+  },
+  {
+    "title": "Parrot",
+    "value": "Parrot",
+    "color": "#f3ca0a"
+  },
+  {
+    "title": "Pascal",
+    "value": "Pascal",
+    "color": "#E3F171"
+  },
+  {
+    "title": "PAWN",
+    "value": "PAWN",
+    "color": "#dbb284"
+  },
+  {
+    "title": "Perl",
+    "value": "Perl",
+    "color": "#0298c3"
+  },
+  {
+    "title": "Perl6",
+    "value": "Perl6",
+    "color": ""
+  },
+  {
+    "title": "PHP",
+    "value": "PHP",
+    "color": "#4F5D95"
+  },
+  {
+    "title": "PicoLisp",
+    "value": "PicoLisp",
+    "color": "#6067af"
+  },
+  {
+    "title": "PigLatin",
+    "value": "PigLatin",
+    "color": "#fcd7de"
+  },
+  {
+    "title": "Pike",
+    "value": "Pike",
+    "color": "#005390"
+  },
+  {
+    "title": "PLpgSQL",
+    "value": "PLpgSQL",
+    "color": "#336790"
+  },
+  {
+    "title": "PLSQL",
+    "value": "PLSQL",
+    "color": "#dad8d8"
+  },
+  {
+    "title": "PogoScript",
+    "value": "PogoScript",
+    "color": "#d80074"
+  },
+  {
+    "title": "Pony",
+    "value": "Pony",
+    "color": ""
+  },
+  {
+    "title": "PostScript",
+    "value": "PostScript",
+    "color": "#da291c"
+  },
+  {
+    "title": "POV",
+    "value": "POV",
+    "color": ""
+  },
+  {
+    "title": "PowerShell",
+    "value": "PowerShell",
+    "color": "#012456"
+  },
+  {
+    "title": "Processing",
+    "value": "Processing",
+    "color": "#0096D8"
+  },
+  {
+    "title": "Prolog",
+    "value": "Prolog",
+    "color": "#74283c"
+  },
+  {
+    "title": "Propeller",
+    "value": "Propeller",
+    "color": ""
+  },
+  {
+    "title": "Protocol",
+    "value": "Protocol",
+    "color": ""
+  },
+  {
+    "title": "Puppet",
+    "value": "Puppet",
+    "color": "#302B6D"
+  },
+  {
+    "title": "Pure",
+    "value": "Pure",
+    "color": ""
+  },
+  {
+    "title": "PureBasic",
+    "value": "PureBasic",
+    "color": ""
+  },
+  {
+    "title": "PureScript",
+    "value": "PureScript",
+    "color": "#1D222D"
+  },
+  {
+    "title": "Python",
+    "value": "Python",
+    "color": "#3572A5"
+  },
+  {
+    "title": "QMake",
+    "value": "QMake",
+    "color": ""
+  },
+  {
+    "title": "QML",
+    "value": "QML",
+    "color": "#44a51c"
+  },
+  {
+    "title": "R",
+    "value": "R",
+    "color": "#198CE7"
+  },
+  {
+    "title": "Racket",
+    "value": "Racket",
+    "color": "#3c5caa"
+  },
+  {
+    "title": "Ragel",
+    "value": "Ragel",
+    "color": "#9d5200"
+  },
+  {
+    "title": "RAML",
+    "value": "RAML",
+    "color": "#77d9fb"
+  },
+  {
+    "title": "RDoc",
+    "value": "RDoc",
+    "color": "#701516"
+  },
+  {
+    "title": "REALbasic",
+    "value": "REALbasic",
+    "color": ""
+  },
+  {
+    "title": "Rebol",
+    "value": "Rebol",
+    "color": "#358a5b"
+  },
+  {
+    "title": "Red",
+    "value": "Red",
+    "color": "#f50000"
+  },
+  {
+    "title": "Redcode",
+    "value": "Redcode",
+    "color": ""
+  },
+  {
+    "title": "Ren",
+    "value": "Ren",
+    "color": ""
+  },
+  {
+    "title": "RenderScript",
+    "value": "RenderScript",
+    "color": ""
+  },
+  {
+    "title": "RobotFramework",
+    "value": "RobotFramework",
+    "color": "#00c0b5"
+  },
+  {
+    "title": "Rouge",
+    "value": "Rouge",
+    "color": "#cc0088"
+  },
+  {
+    "title": "Ruby",
+    "value": "Ruby",
+    "color": "#701516"
+  },
+  {
+    "title": "Rust",
+    "value": "Rust",
+    "color": "#dea584"
+  },
+  {
+    "title": "SaltStack",
+    "value": "SaltStack",
+    "color": "#646464"
+  },
+  {
+    "title": "SAS",
+    "value": "SAS",
+    "color": "#B34936"
+  },
+  {
+    "title": "Scala",
+    "value": "Scala",
+    "color": "#c22d40"
+  },
+  {
+    "title": "Scheme",
+    "value": "Scheme",
+    "color": "#1e4aec"
+  },
+  {
+    "title": "Scilab",
+    "value": "Scilab",
+    "color": "#ca0f21"
+  },
+  {
+    "title": "Self",
+    "value": "Self",
+    "color": "#0579aa"
+  },
+  {
+    "title": "Shell",
+    "value": "Shell",
+    "color": "#89e051"
+  },
+  {
+    "title": "ShellSession",
+    "value": "ShellSession",
+    "color": ""
+  },
+  {
+    "title": "Shen",
+    "value": "Shen",
+    "color": "#120F14"
+  },
+  {
+    "title": "Slash",
+    "value": "Slash",
+    "color": "#007eff"
+  },
+  {
+    "title": "Smali",
+    "value": "Smali",
+    "color": ""
+  },
+  {
+    "title": "Smalltalk",
+    "value": "Smalltalk",
+    "color": "#596706"
+  },
+  {
+    "title": "Smarty",
+    "value": "Smarty",
+    "color": "#f0c040"
+  },
+  {
+    "title": "SMT",
+    "value": "SMT",
+    "color": ""
+  },
+  {
+    "title": "SourcePawn",
+    "value": "SourcePawn",
+    "color": "#f69e1d"
+  },
+  {
+    "title": "SQF",
+    "value": "SQF",
+    "color": "#3F3F3F"
+  },
+  {
+    "title": "SQL",
+    "value": "SQL",
+    "color": "#e38c00"
+  },
+  {
+    "title": "SQLPL",
+    "value": "SQLPL",
+    "color": "#e38c00"
+  },
+  {
+    "title": "Squirrel",
+    "value": "Squirrel",
+    "color": "#800000"
+  },
+  {
+    "title": "Stan",
+    "value": "Stan",
+    "color": "#b2011d"
+  },
+  {
+    "title": "Standard",
+    "value": "Standard",
+    "color": ""
+  },
+  {
+    "title": "Stata",
+    "value": "Stata",
+    "color": "#1a5f91"
+  },
+  {
+    "title": "SuperCollider",
+    "value": "SuperCollider",
+    "color": "#46390b"
+  },
+  {
+    "title": "Solidity",
+    "value": "Solidity",
+    "color": "#AA6746"
+  },
+  {
+    "title": "Swift",
+    "value": "Swift",
+    "color": "#F05138"
+  },
+  {
+    "title": "SystemVerilog",
+    "value": "SystemVerilog",
+    "color": "#DAE1C2"
+  },
+  {
+    "title": "Tcl",
+    "value": "Tcl",
+    "color": "#e4cc98"
+  },
+  {
+    "title": "Tea",
+    "value": "Tea",
+    "color": ""
+  },
+  {
+    "title": "TeX",
+    "value": "TeX",
+    "color": "#3D6117"
+  },
+  {
+    "title": "Thrift",
+    "value": "Thrift",
+    "color": "#D12127"
+  },
+  {
+    "title": "Turing",
+    "value": "Turing",
+    "color": "#cf142b"
+  },
+  {
+    "title": "TXL",
+    "value": "TXL",
+    "color": "#0178b8"
+  },
+  {
+    "title": "TypeScript",
+    "value": "TypeScript",
+    "color": "#3178c6"
+  },
+  {
+    "title": "Uno",
+    "value": "Uno",
+    "color": "#9933cc"
+  },
+  {
+    "title": "UnrealScript",
+    "value": "UnrealScript",
+    "color": "#a54c4d"
+  },
+  {
+    "title": "UrWeb",
+    "value": "UrWeb",
+    "color": "#ccccee"
+  },
+  {
+    "title": "Vala",
+    "value": "Vala",
+    "color": "#a56de2"
+  },
+  {
+    "title": "VCL",
+    "value": "VCL",
+    "color": "#148AA8"
+  },
+  {
+    "title": "Verilog",
+    "value": "Verilog",
+    "color": "#b2b7f8"
+  },
+  {
+    "title": "VHDL",
+    "value": "VHDL",
+    "color": "#adb2cb"
+  },
+  {
+    "title": "VimL",
+    "value": "VimL",
+    "color": ""
+  },
+  {
+    "title": "Visual",
+    "value": "Visual",
+    "color": ""
+  },
+  {
+    "title": "Volt",
+    "value": "Volt",
+    "color": "#1F1F1F"
+  },
+  {
+    "title": "Vue",
+    "value": "Vue",
+    "color": "#41b883"
+  },
+  {
+    "title": "Web",
+    "value": "Web",
+    "color": "#ccccee"
+  },
+  {
+    "title": "WebIDL",
+    "value": "WebIDL",
+    "color": ""
+  },
+  {
+    "title": "wisp",
+    "value": "wisp",
+    "color": "#7582D1"
+  },
+  {
+    "title": "X10",
+    "value": "X10",
+    "color": "#4B6BEF"
+  },
+  {
+    "title": "xBase",
+    "value": "xBase",
+    "color": "#403a40"
+  },
+  {
+    "title": "XC",
+    "value": "XC",
+    "color": "#99DA07"
+  },
+  {
+    "title": "XML",
+    "value": "XML",
+    "color": "#0060ac"
+  },
+  {
+    "title": "Xojo",
+    "value": "Xojo",
+    "color": "#81bd41"
+  },
+  {
+    "title": "XPages",
+    "value": "XPages",
+    "color": ""
+  },
+  {
+    "title": "XProc",
+    "value": "XProc",
+    "color": ""
+  },
+  {
+    "title": "XQuery",
+    "value": "XQuery",
+    "color": "#5232e7"
+  },
+  {
+    "title": "XS",
+    "value": "XS",
+    "color": ""
+  },
+  {
+    "title": "XSLT",
+    "value": "XSLT",
+    "color": "#EB8CEB"
+  },
+  {
+    "title": "Xtend",
+    "value": "Xtend",
+    "color": "#24255d"
+  },
+  {
+    "title": "Yacc",
+    "value": "Yacc",
+    "color": "#4B6C4B"
+  },
+  {
+    "title": "Zephir",
+    "value": "Zephir",
+    "color": "#118f9e"
+  },
+  {
+    "title": "Zimpl",
+    "value": "Zimpl",
+    "color": "#d67711"
+  }
+]

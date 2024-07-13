@@ -1,15 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:githunt_flutter/core/const/route_const.dart';
-import 'package:go_router/go_router.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:githunt_flutter/core/const/route_const.dart';
+import 'package:githunt_flutter/features/widget/enter_token_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:githunt_flutter/core/config/date_util.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:githunt_flutter/core/config/ui_state.dart';
-import 'package:githunt_flutter/core/const/api_const.dart';
 import 'package:githunt_flutter/core/const/ui_const.dart';
 import 'package:githunt_flutter/core/config/date_filter.dart';
 import 'package:githunt_flutter/core/model/language_model.dart';
@@ -21,23 +19,13 @@ import 'package:githunt_flutter/features/widget/loading_widget.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 part 'widget/app_bar.dart';
-
 part 'widget/repo_list.dart';
-
 part 'widget/filter_menu.dart';
-
 part 'widget/reload_button.dart';
-
 part 'widget/repositories_data.dart';
-
 part 'widget/list_status.dart';
-
-part 'widget/enter_token_dialog.dart';
-
 part 'widget/token_alert.dart';
-
 part 'widget/data_list.dart';
-
 part 'widget/repo_list_title.dart';
 
 class MainPage extends StatelessWidget {
@@ -54,7 +42,7 @@ class MainPage extends StatelessWidget {
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 200),
         child: uiState.whenOrNull(
-              success: () => _buildSuccess(),
+              success: () => _buildSuccess(context),
               loading: () => _buildLoading(),
               error: (_) => _buildError(),
             ) ??
@@ -63,17 +51,25 @@ class MainPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSuccess() {
+  Widget _buildSuccess(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(defaultPadding),
       physics: const ClampingScrollPhysics(),
       child: Column(
         children: [
-          const _FilterMenu(),
-          const SizedBox(height: defaultPadding * 1.5),
-          const _MainDataList(),
-          _buildListStatus(),
-          const SizedBox(height: defaultPadding),
+          // todo check if token is already added
+          const _TokenAlertWidget(),
+          Padding(
+            padding: const EdgeInsets.all(defaultPadding),
+            child: Column(
+              children: [
+                const _FilterMenu(),
+                const SizedBox(height: defaultPadding * 1.5),
+                const _MainDataList(),
+                _buildListStatus(),
+                const SizedBox(height: defaultPadding),
+              ],
+            ),
+          ),
         ],
       ),
     );
@@ -131,11 +127,15 @@ class MainPage extends StatelessWidget {
 //         ),
 //       ],
 //     ),
+//       // Banner(
+//       //   message: 'This is a banner',
+//       //   location: BannerLocation.bottomEnd,
+//       // )
 //   );
 // }
 //
 // void _onAddToken(BuildContext context) {
-//   _EnterTokenDialog.show(context).then((token) {
+//   EnterTokenDialog.show(context).then((token) {
 //     if (token != null) {
 //       context.read<MainProvider>().saveGithubToken(token).whenComplete(() {
 //         ScaffoldMessenger.of(context).hideCurrentMaterialBanner();

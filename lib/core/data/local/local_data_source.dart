@@ -1,53 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:githunt_flutter/core/config/string_ext.dart';
+import 'package:githunt_flutter/core/data/local/language_map.dart';
 import 'package:githunt_flutter/core/model/language_model.dart';
-import 'package:isar/isar.dart';
-import 'package:path_provider/path_provider.dart';
 
 abstract class LocalDataSource {
-  Future<List<Language>> getLanguageList();
-  Future<void> saveLanguageList(List<Language> languages);
-  Future<Language?> getLanguageByName(String language);
+  List<Language> getLanguageList();
+  Color? getColorByLanguageName(String? name);
   Future<void> saveGitHubToken(String token);
   Future<String?> getGitHubToken();
+  Future<bool> checkIfTokenAdded();
 }
 
 const _githubTokenKey = "githubToken";
 
 class LocalDataSourceImpl implements LocalDataSource {
-  late Future<Isar> _db;
   final _secureStorage = const FlutterSecureStorage();
-
-  LocalDataSourceImpl() {
-    _db = openDB();
-  }
-
-  @override
-  Future<void> saveLanguageList(List<Language> languages) async {
-    final isar = await _db;
-    await isar.writeTxn(() async {
-      await isar.languages.putAll(languages);
-    });
-  }
-
-  @override
-  Future<List<Language>> getLanguageList() async {
-    final isar = await _db;
-    return await isar.languages.where().findAll();
-  }
-
-  @override
-  Future<Language?> getLanguageByName(String language) async {
-    final isar = await _db;
-    return isar.languages.filter().titleEqualTo(language).findFirst();
-  }
-
-  Future<Isar> openDB() async {
-    if (Isar.instanceNames.isEmpty) {
-      final dir = await getApplicationDocumentsDirectory();
-      return await Isar.open([LanguageSchema], directory: dir.path);
-    }
-    return Future.value(Isar.getInstance());
-  }
 
   @override
   Future<void> saveGitHubToken(String token) async {
@@ -57,5 +25,29 @@ class LocalDataSourceImpl implements LocalDataSource {
   @override
   Future<String?> getGitHubToken() async {
     return await _secureStorage.read(key: _githubTokenKey);
+  }
+
+  @override
+  Future<bool> checkIfTokenAdded() async {
+    final token = await getGitHubToken();
+    return token != null;
+  }
+
+  @override
+  List<Language> getLanguageList() {
+    return languageMap.entries
+        .map(
+          (entry) => Language(
+            title: entry.key,
+            colorCode: entry.value,
+          ),
+        )
+        .toList();
+  }
+
+  @override
+  Color? getColorByLanguageName(String? name) {
+    final colorCode = languageMap[name];
+    return colorCode?.color;
   }
 }

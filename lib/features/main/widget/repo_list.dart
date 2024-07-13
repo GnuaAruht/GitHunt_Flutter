@@ -78,7 +78,8 @@ class _RepoItemWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        if (repo.languageName != null) _LanguageTag(languageName: repo.languageName),
+        if (repo.languageName != null)
+          _LanguageTag(languageName: repo.languageName!),
         _StarTag(count: repo.stargazersCount ?? 0),
         _ForkTag(count: repo.forks ?? 0),
         _IssueTag(count: repo.openIssues ?? 0),
@@ -150,7 +151,10 @@ class _Tag extends StatelessWidget {
       children: [
         SvgPicture.asset(
           assetSvgUrl,
-          colorFilter: const ColorFilter.mode(Colors.black54, BlendMode.srcIn),
+          colorFilter: const ColorFilter.mode(
+            Colors.black54,
+            BlendMode.srcIn,
+          ),
         ),
         const SizedBox(width: 6.0),
         Text(NumberFormat('#,###').format(count))
@@ -160,30 +164,23 @@ class _Tag extends StatelessWidget {
 }
 
 class _LanguageTag extends StatelessWidget {
-  final String? languageName;
+  final String languageName;
 
   const _LanguageTag({super.key, required this.languageName});
 
   @override
   Widget build(BuildContext context) {
     final mainProvider = context.read<MainProvider>();
-    return FutureBuilder<Language?>(
-      future: mainProvider.getLanguageByName(languageName ?? ''),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) return _buildContent(snapshot.data!);
-        return const SizedBox.shrink();
-      },
-    );
-  }
-
-  Widget _buildContent(Language language) {
+    final color = mainProvider.getColorByLanguageName(languageName);
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        CircleAvatar(radius: 6.0, backgroundColor: language.color),
-        const SizedBox(width: 4.0),
-        Text(language.title)
+        if (color != null) ...[
+          CircleAvatar(radius: 6.0, backgroundColor: color),
+          const SizedBox(width: 4.0)
+        ],
+        Text(languageName)
       ],
     );
   }
-
 }

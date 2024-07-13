@@ -31,7 +31,7 @@ class RemoteDataSourceImpl implements RemoteDataSource {
 
     final query = language.isAllLanguage
         ? dateRangeFilter
-        : "language:${language.value}+$dateRangeFilter";
+        : "language:${language.title}+$dateRangeFilter";
 
     return client.get(
       ApiConst.repositoryListUrl,

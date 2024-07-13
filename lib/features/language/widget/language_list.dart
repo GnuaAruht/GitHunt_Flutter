@@ -43,8 +43,11 @@ class _LanguageItemWidget extends StatelessWidget {
         horizontal: defaultPadding * 1.5,
         vertical: 1.6,
       ),
-      leading: language.color != null
-          ? CircleAvatar(radius: 8.0, backgroundColor: language.color!)
+      leading: language.colorCode != null
+          ? CircleAvatar(
+              radius: 8.0,
+              backgroundColor: language.colorCode!.color,
+            )
           : null,
       title: Text(language.title),
     );

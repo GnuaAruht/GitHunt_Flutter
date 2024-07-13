@@ -1,17 +1,22 @@
-part of '../main_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:githunt_flutter/core/const/api_const.dart';
+import 'package:githunt_flutter/core/const/ui_const.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class _EnterTokenDialog extends StatefulWidget {
-  const _EnterTokenDialog({super.key});
+class EnterTokenDialog extends StatefulWidget {
+  const EnterTokenDialog({super.key});
 
   static Future<String?> show(BuildContext context) {
-    return SmartDialog.show<String>(builder: (_) => const _EnterTokenDialog());
+    return SmartDialog.show<String>(builder: (_) => const EnterTokenDialog());
   }
 
   @override
-  State<_EnterTokenDialog> createState() => _EnterTokenDialogState();
+  State<EnterTokenDialog> createState() => _EnterTokenDialogState();
+
 }
 
-class _EnterTokenDialogState extends State<_EnterTokenDialog> {
+class _EnterTokenDialogState extends State<EnterTokenDialog> {
 
   final _formKey = GlobalKey<FormState>();
   String? _token;
@@ -84,7 +89,7 @@ class _EnterTokenDialogState extends State<_EnterTokenDialog> {
         const SizedBox(width: defaultPadding / 2),
         TextButton(
           onPressed: () => SmartDialog.dismiss(),
-          child: const Text('CANCEL',style: TextStyle(color: Colors.red)),
+          child: const Text('CANCEL', style: TextStyle(color: Colors.red)),
         ),
       ],
     );

@@ -7,10 +7,6 @@ class LanguageProvider extends ChangeNotifier {
 
   final AppRepository repository;
 
-  // ui state
-  UIState _uiState = const UIState.init();
-  UIState get uiState => _uiState;
-
   // language list
   final List<Language> _languages = [];
   List<Language> _filteredLanguage = [];
@@ -21,18 +17,10 @@ class LanguageProvider extends ChangeNotifier {
   }
 
   Future<void> _getLanguageList() async {
-    _uiState = const UIState.loading();
+    final languageList = repository.getLanguageList();
+    _languages..clear()..insert(0, Language.allLanguage)..addAll(languageList);
+    _filteredLanguage = _languages;
     notifyListeners();
-    final dataState = await repository.getLanguageList();
-    dataState.when(success: (data) {
-      _uiState = const UIState.success();
-      _languages..clear()..insert(0, Language.allLanguage)..addAll(data);
-      _filteredLanguage = _languages;
-      notifyListeners();
-    }, failure: (msg) {
-      _uiState = UIState.error(msg);
-      notifyListeners();
-    });
   }
 
   void searchLanguage(String query)  {

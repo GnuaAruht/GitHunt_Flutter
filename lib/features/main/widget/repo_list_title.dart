@@ -11,16 +11,7 @@ class _RepoListTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     final dateFilter = context.read<MainProvider>().dateFilter;
-
-    final timeAgo = timeago.format(fromDate);
-
-
-    // todo calculate date ago
-
-
     return RichText(
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
@@ -30,8 +21,7 @@ class _RepoListTitleWidget extends StatelessWidget {
           fontSize: 20.0,
           fontWeight: FontWeight.w600,
         ),
-        // text: '100 days ago\t',
-        text: '$timeAgo\t',
+        text: '${timeago.format(fromDate)}\t',
         children: [
           TextSpan(
             text: (dateFilter == DateFilter.daily)

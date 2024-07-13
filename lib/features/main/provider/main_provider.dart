@@ -84,7 +84,7 @@ class MainProvider extends ChangeNotifier {
   }
 
   void updateLanguage(Language language) {
-    if (_language.value != language.value) {
+    if (_language.title != language.title) {
       _language = language;
       notifyListeners();
       _startDataLoading();
@@ -105,8 +105,12 @@ class MainProvider extends ChangeNotifier {
     return repository.saveGithubToken(token);
   }
 
-  Future<Language?> getLanguageByName(String languageName) {
-    return repository.getLanguageByName(languageName);
+  Future<bool> checkIfTokenAdded() {
+    return repository.checkIfTokenAdded();
+  }
+
+  Color? getColorByLanguageName(String? name) {
+    return repository.getColorByLanguageName(name);
   }
 
 }

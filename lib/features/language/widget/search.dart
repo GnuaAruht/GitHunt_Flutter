@@ -8,17 +8,12 @@ class _SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final uiState = context
-        .select<LanguageProvider, UIState>((provider) => provider.uiState);
-
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: defaultPadding,
         vertical: 4.0,
       ),
       child: TextField(
-        enabled: uiState is UIStateSuccess,
         onTap: onTap,
         onChanged: (value) {
           context.read<LanguageProvider>().searchLanguage(value ?? '');

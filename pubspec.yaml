@@ -13,15 +13,11 @@ dependencies:
   google_fonts: ^6.2.1
   flutter_svg: ^2.0.10+1
   go_router: ^14.2.0
-  yaml: ^3.1.2
   dio: ^5.4.3+1
   provider: ^6.1.2
   freezed_annotation: ^2.4.1
   json_annotation: ^4.9.0
   get_it: ^7.7.0
-  isar: ^3.1.0+1
-  isar_flutter_libs: ^3.1.0+1
-  path_provider: ^2.0.15
   flutter_smart_dialog: ^4.9.7+7
   url_launcher: ^6.3.0
   flutter_secure_storage: ^9.2.2
@@ -36,7 +32,6 @@ dev_dependencies:
   freezed:
   build_runner: ^2.4.11
   json_serializable: ^6.8.0
-  isar_generator: ^3.1.0+1
 
 flutter:
   uses-material-design: true
@@ -44,3 +39,4 @@ flutter:
   assets:
     - assets/
     - assets/svg/
+    - assets/json/

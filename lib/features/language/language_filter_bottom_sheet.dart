@@ -1,20 +1,14 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:githunt_flutter/core/config/injector.dart';
+import 'package:githunt_flutter/core/config/string_ext.dart';
 import 'package:provider/provider.dart';
-import 'package:githunt_flutter/core/config/ui_state.dart';
 import 'package:githunt_flutter/core/const/ui_const.dart';
 import 'package:githunt_flutter/core/model/language_model.dart';
 import 'package:githunt_flutter/features/language/provider/language_provider.dart';
-import 'package:githunt_flutter/features/widget/loading_widget.dart';
 
 part 'widget/search.dart';
-
 part 'widget/language_list.dart';
-
 part 'widget/filter_title.dart';
-
 part 'widget/language_not_found.dart';
 
 const _maxExtent = 0.95;
@@ -101,33 +95,11 @@ class _LanguageFilterBottomSheetState extends State<LanguageFilterBottomSheet> {
               const SizedBox(height: 10.0),
               _SearchWidget(onTap: onSearchTapped),
               const SizedBox(height: 10.0),
-              Expanded(child: _FilterContent(controller: scrollController))
+              Expanded(child: _LanguageListWidget(controller: scrollController))
             ],
           ),
         );
       },
-    );
-  }
-}
-
-///
-
-class _FilterContent extends StatelessWidget {
-  final ScrollController controller;
-  const _FilterContent({super.key, required this.controller});
-
-  @override
-  Widget build(BuildContext context) {
-
-    final uiState = context
-        .select<LanguageProvider, UIState>((provider) => provider.uiState);
-
-    return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 500),
-      child: uiState.whenOrNull(
-              success: () => _LanguageListWidget(controller: controller),
-              error: (msg) => Center(child: Text(msg))) ??
-          Center(child: LoadingWidget.small()),
     );
   }
 }
