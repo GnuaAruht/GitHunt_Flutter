@@ -3,9 +3,6 @@ part of '../main_page.dart';
 const _tokenAlertMessage =
     "Generate a token and add it to avoid hitting the rate limit.";
 
-// const _tokenAlertMessage =
-//     "Add a token to avoid hitting the rate limit.";
-
 class _TokenAlertWidget extends StatelessWidget {
   const _TokenAlertWidget({super.key});
 
@@ -18,10 +15,12 @@ class _TokenAlertWidget extends StatelessWidget {
         color: const Color(0xFFF1B00A),
         padding: const EdgeInsets.symmetric(
           horizontal: defaultPadding,
-          vertical: 6.0,
+          vertical: 8.0,
         ),
         child: const Row(
           children: [
+            Icon(Icons.info_outline, color: Colors.white),
+            SizedBox(width: defaultPadding / 2),
             Expanded(
               child: Text(
                 _tokenAlertMessage,
@@ -32,7 +31,8 @@ class _TokenAlertWidget extends StatelessWidget {
               ),
             ),
             SizedBox(width: defaultPadding / 2),
-            Icon(Icons.close, color: Colors.white),
+            // todo add close function
+            Icon(Icons.close, color: Colors.white)
           ],
         ),
       ),

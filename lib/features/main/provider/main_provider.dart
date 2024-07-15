@@ -10,12 +10,12 @@ class MainProvider extends ChangeNotifier {
   final AppRepository repository;
 
   // date filter
-  DateFilter _dateFilter = DateFilter.daily;
+  late DateFilter _dateFilter;
   DateFilter get dateFilter => _dateFilter;
 
   // language
-  Language _language = Language.allLanguage;
-  Language get language => _language;
+  late String _language;
+  String get language => _language;
 
   // ui state
   UIState _uiState = const UIState.init();
@@ -43,7 +43,22 @@ class MainProvider extends ChangeNotifier {
   }
 
   MainProvider({required this.repository}) {
+    _initDataLoading();
+  }
+
+  Future<void> _initDataLoading() async {
+    await _getSavedLanguage();
+    await _getSaveDateFilter();
     _startDataLoading();
+  }
+
+
+  Future<void> _getSavedLanguage() async {
+    _language = await repository.getSavedLang();
+  }
+
+  Future<void> _getSaveDateFilter() async {
+    _dateFilter = await repository.getSavedDateFilter();
   }
 
   void _startDataLoading() {
@@ -83,17 +98,19 @@ class MainProvider extends ChangeNotifier {
 
   }
 
-  void updateLanguage(Language language) {
-    if (_language.title != language.title) {
+  Future<void> updateLanguage(String language) async {
+    if (_language != language) {
       _language = language;
+      await repository.saveLanguage(language);
       notifyListeners();
       _startDataLoading();
     }
   }
 
-  void updateDateFilter(DateFilter dateFilter) {
+  Future<void> updateDateFilter(DateFilter dateFilter) async {
     if (_dateFilter != dateFilter) {
       _dateFilter = dateFilter;
+      await repository.saveDateFilter(dateFilter);
       notifyListeners();
       _startDataLoading();
     }
@@ -112,5 +129,4 @@ class MainProvider extends ChangeNotifier {
   Color? getColorByLanguageName(String? name) {
     return repository.getColorByLanguageName(name);
   }
-
 }

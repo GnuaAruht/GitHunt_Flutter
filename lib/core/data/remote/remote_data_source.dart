@@ -6,7 +6,7 @@ import 'package:githunt_flutter/core/model/language_model.dart';
 abstract class RemoteDataSource {
   Future<Response> getRepositoryList(
     String? pat,
-    Language language,
+    String language,
     DateTime fromDate,
     DateTime toDate,
   );
@@ -20,12 +20,12 @@ class RemoteDataSourceImpl implements RemoteDataSource {
   @override
   Future<Response> getRepositoryList(
     String? pat,
-    Language language,
+    String language,
     DateTime fromDate,
     DateTime toDate,
   ) {
 
-    final langQuery = language.isAllLang ? "" : "language:${language.title} ";
+    final langQuery = language == allLanguages ? "" : "language:$language ";
     final dateQuery = "created:${fromDate.toQuery()}..${toDate.toQuery()}";
 
     Options? options;

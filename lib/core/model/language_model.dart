@@ -1,9 +1,9 @@
 
-
+const allLanguages = "All Languages";
 
 class Language {
 
-  static final allLanguage = Language(title: 'All Languages');
+  static final allLanguage = Language(title: allLanguages);
 
   bool get isAllLang => this == allLanguage;
   final String title;

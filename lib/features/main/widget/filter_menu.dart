@@ -71,7 +71,7 @@ class _LanguageFilterButton extends StatelessWidget {
       onTap: () {
         LanguageFilterBottomSheet.show(context).then((language) {
           if (language != null) {
-            context.read<MainProvider>().updateLanguage(language);
+            context.read<MainProvider>().updateLanguage(language.title);
           }
         });
       },
@@ -80,11 +80,11 @@ class _LanguageFilterButton extends StatelessWidget {
           children: [
             const Icon(Icons.filter_alt_sharp, color: Colors.black),
             const SizedBox(width: 8.0),
-            Selector<MainProvider, Language>(
+            Selector<MainProvider, String?>(
               selector: (_, provider) => provider.language,
               builder: (_, language, __) => AnimatedSwitcher(
                 duration: const Duration(milliseconds: 200),
-                child: Text(key: UniqueKey(), language.title),
+                child: Text(key: UniqueKey(), language ?? 'All languages'),
               ),
             )
           ],

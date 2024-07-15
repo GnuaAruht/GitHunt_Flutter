@@ -19,13 +19,21 @@ import 'package:githunt_flutter/features/widget/loading_widget.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 part 'widget/app_bar.dart';
+
 part 'widget/repo_list.dart';
+
 part 'widget/filter_menu.dart';
+
 part 'widget/reload_button.dart';
+
 part 'widget/repositories_data.dart';
+
 part 'widget/list_status.dart';
+
 part 'widget/token_alert.dart';
+
 part 'widget/data_list.dart';
+
 part 'widget/repo_list_title.dart';
 
 class MainPage extends StatelessWidget {
@@ -42,11 +50,10 @@ class MainPage extends StatelessWidget {
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 200),
         child: uiState.whenOrNull(
-              success: () => _buildSuccess(context),
-              loading: () => _buildLoading(),
-              error: (_) => _buildError(),
-            ) ??
-            const SizedBox.shrink(),
+          success: () => _buildSuccess(context),
+          loading: () => _buildLoading(),
+          error: (_) => _buildError(),
+        ) ?? const SizedBox.shrink(),
       ),
     );
   }

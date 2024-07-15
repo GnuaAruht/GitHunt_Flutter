@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:githunt_flutter/core/config/date_filter.dart';
 import 'package:githunt_flutter/core/data/local/local_data_source.dart';
 import 'package:githunt_flutter/core/model/repository.dart';
 import 'package:githunt_flutter/core/model/repositories_data.dart';
@@ -16,10 +15,14 @@ abstract class AppRepository {
   Future<String?> getGitHubToken();
   Future<bool> checkIfTokenAdded();
   Future<DataState<RepositoriesData>> getRepositoryList({
-    required Language language,
+    required String language,
     required DateTime fromDate,
     required DateTime toDate,
   });
+  Future<String> getSavedLang();
+  Future<void> saveLanguage(String language);
+  Future<DateFilter> getSavedDateFilter();
+  Future<void> saveDateFilter(DateFilter dateFilter);
 }
 
 const _unknownError = "Something went wrong";
@@ -30,9 +33,23 @@ class AppRepositoryImpl implements AppRepository {
 
   AppRepositoryImpl({required this.local, required this.remote});
 
+
+  @override
+  Future<String> getSavedLang() => local.getLanguage();
+
+  @override
+  Future<void> saveLanguage(String language) => local.saveLanguage(language);
+
+  @override
+  Future<DateFilter> getSavedDateFilter() => local.getDateFilter();
+
+  @override
+  Future<void> saveDateFilter(DateFilter dateFilter) => local.saveDateFilter(dateFilter);
+
+
   @override
   Future<DataState<RepositoriesData>> getRepositoryList({
-    required Language language,
+    required String language,
     required DateTime fromDate,
     required DateTime toDate,
   }) async {
