@@ -16,14 +16,29 @@ abstract class LocalDataSource {
   Future<DateFilter> getDateFilter();
   Future<void> saveLanguage(String language);
   Future<String> getLanguage();
+  Future<void> markAsBannerClosed();
+  Future<bool> checkIfBannerClosed();
 }
 
 const _githubTokenKey = "githubToken";
 const _dateFilter = "dateFilter";
 const _languageFilter = "languageFilter";
+const _bannerClosed = "bannerClosed";
 
 class LocalDataSourceImpl implements LocalDataSource {
   final _secureStorage = const FlutterSecureStorage();
+
+  @override
+  Future<void> markAsBannerClosed() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool(_bannerClosed, true);
+  }
+
+  @override
+  Future<bool> checkIfBannerClosed() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs.getBool(_bannerClosed) ?? false;
+  }
 
   @override
   Future<void> saveDateFilter(DateFilter dateFilter) async {

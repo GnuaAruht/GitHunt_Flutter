@@ -4,6 +4,7 @@ const _tokenAlertMessage =
     "Generate a token and add it to avoid hitting the rate limit.";
 
 class _TokenAlertWidget extends StatelessWidget {
+
   const _TokenAlertWidget({super.key});
 
   @override
@@ -17,11 +18,11 @@ class _TokenAlertWidget extends StatelessWidget {
           horizontal: defaultPadding,
           vertical: 8.0,
         ),
-        child: const Row(
+        child: Row(
           children: [
-            Icon(Icons.info_outline, color: Colors.white),
-            SizedBox(width: defaultPadding / 2),
-            Expanded(
+            const Icon(Icons.info_outline, color: Colors.white),
+            const SizedBox(width: defaultPadding / 2),
+            const Expanded(
               child: Text(
                 _tokenAlertMessage,
                 style: TextStyle(
@@ -30,9 +31,11 @@ class _TokenAlertWidget extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: defaultPadding / 2),
-            // todo add close function
-            Icon(Icons.close, color: Colors.white)
+            const SizedBox(width: defaultPadding / 2),
+            GestureDetector(
+              onTap: () => context.read<MainProvider>().markBannerClosed(),
+              child: const Icon(Icons.close, color: Colors.white),
+            )
           ],
         ),
       ),

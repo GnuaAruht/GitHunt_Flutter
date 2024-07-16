@@ -10,7 +10,6 @@ import 'package:githunt_flutter/core/config/date_util.dart';
 import 'package:githunt_flutter/core/config/ui_state.dart';
 import 'package:githunt_flutter/core/const/ui_const.dart';
 import 'package:githunt_flutter/core/config/date_filter.dart';
-import 'package:githunt_flutter/core/model/language_model.dart';
 import 'package:githunt_flutter/core/model/repositories_data.dart';
 import 'package:githunt_flutter/core/model/repository.dart';
 import 'package:githunt_flutter/features/language/language_filter_bottom_sheet.dart';
@@ -50,10 +49,11 @@ class MainPage extends StatelessWidget {
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 200),
         child: uiState.whenOrNull(
-          success: () => _buildSuccess(context),
-          loading: () => _buildLoading(),
-          error: (_) => _buildError(),
-        ) ?? const SizedBox.shrink(),
+              success: () => _buildSuccess(context),
+              loading: () => _buildLoading(),
+              error: (_) => _buildError(),
+            ) ??
+            const SizedBox.shrink(),
       ),
     );
   }
@@ -63,8 +63,18 @@ class MainPage extends StatelessWidget {
       physics: const ClampingScrollPhysics(),
       child: Column(
         children: [
-          // todo check if token is already added
-          const _TokenAlertWidget(),
+          // check if token banner should show
+          Selector<MainProvider, bool>(
+            selector: (_, provider) => provider.shouldShowBanner,
+            builder: (_, shouldShow, __) {
+              return AnimatedSwitcher(
+                duration: const Duration(seconds: 1),
+                child: shouldShow
+                    ? const _TokenAlertWidget()
+                    : const SizedBox.shrink(),
+              );
+            },
+          ),
           Padding(
             padding: const EdgeInsets.all(defaultPadding),
             child: Column(
@@ -95,7 +105,6 @@ class MainPage extends StatelessWidget {
   Widget _buildLoading() => Center(child: LoadingWidget.medium());
 
   Widget _buildError() => const Center(child: Text('Data loading error.'));
-
 }
 
 // void _showTokenAlertBanner(BuildContext context) {

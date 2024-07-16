@@ -23,6 +23,8 @@ abstract class AppRepository {
   Future<void> saveLanguage(String language);
   Future<DateFilter> getSavedDateFilter();
   Future<void> saveDateFilter(DateFilter dateFilter);
+  Future<void> markAsBannerClosed();
+  Future<bool> checkIfBannerClosed();
 }
 
 const _unknownError = "Something went wrong";
@@ -90,6 +92,16 @@ class AppRepositoryImpl implements AppRepository {
   @override
   Color? getColorByLanguageName(String? name) {
     return local.getColorByLanguageName(name);
+  }
+
+  @override
+  Future<void> markAsBannerClosed() {
+    return local.markAsBannerClosed();
+  }
+
+  @override
+  Future<bool> checkIfBannerClosed() {
+    return local.checkIfBannerClosed();
   }
 
 }

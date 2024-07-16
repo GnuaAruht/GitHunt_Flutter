@@ -21,6 +21,14 @@ class MainProvider extends ChangeNotifier {
   UIState _uiState = const UIState.init();
   UIState get uiState => _uiState;
 
+  late bool _tokenAdded;
+  bool get tokenAdded => _tokenAdded;
+
+  late bool _bannerClosed;
+  bool get bannerClosed => _bannerClosed;
+
+  bool get shouldShowBanner => !(tokenAdded || bannerClosed);
+
   List<RepositoriesData> _repositoriesData = [];
   List<RepositoriesData> get repositoriesData => _repositoriesData;
 
@@ -46,10 +54,26 @@ class MainProvider extends ChangeNotifier {
     _initDataLoading();
   }
 
+  Future<void> markBannerClosed() async {
+    _bannerClosed = true;
+    repository.markAsBannerClosed();
+    notifyListeners();
+  }
+
   Future<void> _initDataLoading() async {
     await _getSavedLanguage();
     await _getSaveDateFilter();
+    await _checkIfTokenAdded();
+    await _checkIfBannerClosed();
     _startDataLoading();
+  }
+
+  Future<void> _checkIfBannerClosed() async {
+    _bannerClosed = await repository.checkIfBannerClosed();
+  }
+
+  Future<void> _checkIfTokenAdded() async {
+    _tokenAdded = await repository.checkIfTokenAdded();
   }
 
 
@@ -118,12 +142,10 @@ class MainProvider extends ChangeNotifier {
 
   void reloadNextData() => _getRepositories();
 
-  Future<void> saveGithubToken(String token) {
-    return repository.saveGithubToken(token);
-  }
-
-  Future<bool> checkIfTokenAdded() {
-    return repository.checkIfTokenAdded();
+  Future<void> saveGithubToken(String token) async {
+    await repository.saveGithubToken(token);
+    _tokenAdded = true;
+    notifyListeners();
   }
 
   Color? getColorByLanguageName(String? name) {
