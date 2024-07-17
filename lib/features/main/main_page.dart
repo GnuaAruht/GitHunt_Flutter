@@ -18,21 +18,13 @@ import 'package:githunt_flutter/features/widget/loading_widget.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 part 'widget/app_bar.dart';
-
 part 'widget/repo_list.dart';
-
 part 'widget/filter_menu.dart';
-
 part 'widget/reload_button.dart';
-
 part 'widget/repositories_data.dart';
-
 part 'widget/list_status.dart';
-
 part 'widget/token_alert.dart';
-
 part 'widget/data_list.dart';
-
 part 'widget/repo_list_title.dart';
 
 class MainPage extends StatelessWidget {
@@ -58,104 +50,9 @@ class MainPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSuccess(BuildContext context) {
-    return SingleChildScrollView(
-      physics: const ClampingScrollPhysics(),
-      child: Column(
-        children: [
-          // check if token banner should show
-          Selector<MainProvider, bool>(
-            selector: (_, provider) => provider.shouldShowBanner,
-            builder: (_, shouldShow, __) {
-              return AnimatedSwitcher(
-                duration: const Duration(seconds: 1),
-                child: shouldShow
-                    ? const _TokenAlertWidget()
-                    : const SizedBox.shrink(),
-              );
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.all(defaultPadding),
-            child: Column(
-              children: [
-                const _FilterMenu(),
-                const SizedBox(height: defaultPadding * 1.5),
-                const _MainDataList(),
-                _buildListStatus(),
-                const SizedBox(height: defaultPadding),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildListStatus() {
-    return Selector<MainProvider, bool>(
-      selector: (_, provider) => provider.repositoriesData.isEmpty,
-      child: const _ListStatusWidget(),
-      builder: (context, isEmpty, child) {
-        return isEmpty ? const SizedBox.shrink() : child!;
-      },
-    );
-  }
+  Widget _buildSuccess(BuildContext context) => const _SuccessContent();
 
   Widget _buildLoading() => Center(child: LoadingWidget.medium());
 
   Widget _buildError() => const Center(child: Text('Data loading error.'));
 }
-
-// void _showTokenAlertBanner(BuildContext context) {
-//   ScaffoldMessenger.of(context).showMaterialBanner(
-//     MaterialBanner(
-//       leading: const Icon(Icons.info_outline_rounded, color: Colors.white),
-//       content: const Text(_tokenAlertMessage),
-//       contentTextStyle: const TextStyle(
-//         color: Colors.white,
-//         fontWeight: FontWeight.normal,
-//         fontSize: 16.0,
-//       ),
-//       backgroundColor: const Color(0xFFF1B00A),
-//       actions: <Widget>[
-//         TextButton(
-//           onPressed: () => _onAddToken(context),
-//           child: const Text(
-//             'ADD TOKEN',
-//             style: TextStyle(
-//               color: Colors.white,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//         ),
-//         TextButton(
-//           onPressed: () {
-//             ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-//           },
-//           child: const Text(
-//             'DISMISS',
-//             style: TextStyle(
-//               color: Colors.white,
-//               fontWeight: FontWeight.bold,
-//             ),
-//           ),
-//         ),
-//       ],
-//     ),
-//       // Banner(
-//       //   message: 'This is a banner',
-//       //   location: BannerLocation.bottomEnd,
-//       // )
-//   );
-// }
-//
-// void _onAddToken(BuildContext context) {
-//   EnterTokenDialog.show(context).then((token) {
-//     if (token != null) {
-//       context.read<MainProvider>().saveGithubToken(token).whenComplete(() {
-//         ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-//       });
-//     }
-//   });
-// }

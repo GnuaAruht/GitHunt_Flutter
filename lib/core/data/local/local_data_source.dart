@@ -18,15 +18,31 @@ abstract class LocalDataSource {
   Future<String> getLanguage();
   Future<void> markAsBannerClosed();
   Future<bool> checkIfBannerClosed();
+  Future<void> saveThemeMode(ThemeMode themeMode);
+  Future<ThemeMode> getThemeMode();
+  // Future<void> save
 }
 
 const _githubTokenKey = "githubToken";
 const _dateFilter = "dateFilter";
 const _languageFilter = "languageFilter";
 const _bannerClosed = "bannerClosed";
+const _themeMode = "themeMode";
 
 class LocalDataSourceImpl implements LocalDataSource {
   final _secureStorage = const FlutterSecureStorage();
+
+  @override
+  Future<void> saveThemeMode(ThemeMode themeMode) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt(_themeMode, themeMode.index);
+  }
+
+  @override
+  Future<ThemeMode> getThemeMode() async {
+    final prefs = await SharedPreferences.getInstance();
+    return ThemeMode.values[prefs.getInt(_themeMode) ?? 0];
+  }
 
   @override
   Future<void> markAsBannerClosed() async {

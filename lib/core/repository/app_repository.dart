@@ -25,6 +25,8 @@ abstract class AppRepository {
   Future<void> saveDateFilter(DateFilter dateFilter);
   Future<void> markAsBannerClosed();
   Future<bool> checkIfBannerClosed();
+  Future<void> saveThemeMode(ThemeMode themeMode);
+  Future<ThemeMode> getThemeMode();
 }
 
 const _unknownError = "Something went wrong";
@@ -102,6 +104,16 @@ class AppRepositoryImpl implements AppRepository {
   @override
   Future<bool> checkIfBannerClosed() {
     return local.checkIfBannerClosed();
+  }
+
+  @override
+  Future<ThemeMode> getThemeMode() {
+    return local.getThemeMode();
+  }
+
+  @override
+  Future<void> saveThemeMode(ThemeMode themeMode) {
+    return local.saveThemeMode(themeMode);
   }
 
 }

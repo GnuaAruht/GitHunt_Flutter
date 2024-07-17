@@ -5,6 +5,8 @@ import 'package:githunt_flutter/core/config/app_theme.dart';
 import 'package:githunt_flutter/core/config/custom_timeago_message.dart';
 import 'package:githunt_flutter/core/config/injector.dart';
 import 'package:githunt_flutter/core/config/route_config.dart';
+import 'package:githunt_flutter/theme_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 void main() async {
@@ -15,9 +17,15 @@ void main() async {
       DeviceOrientation.portraitDown,
     ],
   );
-  await initDependencies();
   timeago.setLocaleMessages('en', CustomMessage());
-  runApp(const GitHuntApp());
+  await initDependencies();
+  final themeProvider = await ThemeProvider.create(repo: injector.get());
+  runApp(
+    ChangeNotifierProvider.value(
+      value: themeProvider,
+      child: const GitHuntApp(),
+    ),
+  );
 }
 
 class GitHuntApp extends StatelessWidget {
@@ -25,11 +33,18 @@ class GitHuntApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Flutter GitHunt',
-      theme: AppTheme.buildLightTheme(),
-      routerConfig: appRouter,
-      builder: FlutterSmartDialog.init(),
+    return Selector<ThemeProvider, ThemeMode>(
+      selector: (_, provider) => provider.themeMode,
+      builder: (_, themeMode, __) {
+        return MaterialApp.router(
+          title: 'Flutter GitHunt',
+          theme: AppTheme.buildLightTheme(),
+          darkTheme: AppTheme.buildDarkTheme(),
+          routerConfig: appRouter,
+          themeMode: themeMode,
+          builder: FlutterSmartDialog.init(),
+        );
+      },
     );
   }
 }

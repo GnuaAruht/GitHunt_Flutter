@@ -25,6 +25,7 @@ dependencies:
   cached_network_image: ^3.3.1
   timeago: ^3.6.1
   shared_preferences: ^2.2.3
+  package_info_plus: ^8.0.0
 
 dev_dependencies:
   flutter_test:

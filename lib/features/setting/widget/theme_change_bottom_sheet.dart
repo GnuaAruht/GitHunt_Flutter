@@ -1,4 +1,4 @@
-part of '../setting_page.dart';
+part of '../settings_page.dart';
 
 extension ThemeModeExt on ThemeMode {
   String get title {
@@ -13,7 +13,7 @@ extension ThemeModeExt on ThemeMode {
   }
 }
 
-class _ThemeChangeBottomSheet extends StatelessWidget {
+class _ThemeChangeBottomSheet extends StatefulWidget {
   static Future<ThemeMode?> show(BuildContext context) {
     return showModalBottomSheet<ThemeMode>(
       context: context,
@@ -27,6 +27,14 @@ class _ThemeChangeBottomSheet extends StatelessWidget {
   }
 
   const _ThemeChangeBottomSheet({super.key});
+
+  @override
+  State<_ThemeChangeBottomSheet> createState() =>
+      _ThemeChangeBottomSheetState();
+}
+
+class _ThemeChangeBottomSheetState extends State<_ThemeChangeBottomSheet> {
+  late ThemeMode selectedThemeMode = context.read<ThemeProvider>().themeMode;
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +61,15 @@ class _ThemeChangeBottomSheet extends StatelessWidget {
                   ),
                   title: Text(mode.title),
                   trailing: Radio(
-                    value: 0,
-                    groupValue: -1,
-                    onChanged: (value) {},
+                    value: mode,
+                    groupValue: selectedThemeMode,
+                    onChanged: (value) {
+                      if (value != null) {
+                        setState(() {
+                          selectedThemeMode = value;
+                        });
+                      }
+                    },
                   ),
                 );
               },

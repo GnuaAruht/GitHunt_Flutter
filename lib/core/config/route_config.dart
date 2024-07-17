@@ -3,7 +3,7 @@ import 'package:githunt_flutter/core/config/injector.dart';
 import 'package:githunt_flutter/core/const/route_const.dart';
 import 'package:githunt_flutter/features/main/main_page.dart';
 import 'package:githunt_flutter/features/main/provider/main_provider.dart';
-import 'package:githunt_flutter/features/setting/setting_page.dart';
+import 'package:githunt_flutter/features/setting/settings_page.dart';
 import 'package:githunt_flutter/features/splash/splash_page.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -26,7 +26,7 @@ final GoRouter appRouter = GoRouter(
         routes: [
           GoRoute(
             path: RouteConst.setting,
-            builder: (_, __) => const SettingPage(),
+            builder: (_, __) => const SettingsPage(),
           ),
         ]),
   ],

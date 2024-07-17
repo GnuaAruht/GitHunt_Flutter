@@ -95,11 +95,14 @@ class _LanguageFilterButton extends StatelessWidget {
 }
 
 class _FilterBtnContainer extends StatelessWidget {
-
   final Widget child;
   final double minWidth;
 
-  const _FilterBtnContainer({super.key,this.minWidth = 100.0,required this.child});
+  const _FilterBtnContainer({
+    super.key,
+    this.minWidth = 100.0,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
