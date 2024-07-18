@@ -26,6 +26,7 @@ dependencies:
   timeago: ^3.6.1
   shared_preferences: ^2.2.3
   package_info_plus: ^8.0.0
+  flutter_native_splash: ^2.4.1
 
 dev_dependencies:
   flutter_test:
@@ -34,6 +35,11 @@ dev_dependencies:
   freezed:
   build_runner: ^2.4.11
   json_serializable: ^6.8.0
+
+flutter_native_splash:
+  color: "#A9A9A9"
+  android: true
+  ios: true
 
 flutter:
   uses-material-design: true

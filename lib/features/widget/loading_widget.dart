@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:githunt_flutter/theme_provider.dart';
-import 'package:provider/provider.dart';
 
 class LoadingWidget extends StatefulWidget {
 
@@ -38,11 +36,11 @@ class _LoadingWidgetState extends State<LoadingWidget>
 
   @override
   Widget build(BuildContext context) {
-    final themeMode = context.read<ThemeProvider>().themeMode;
+    final brightness = Theme.of(context).brightness;
     return RotationTransition(
       turns: controller,
       child: Image.asset(
-        themeMode == ThemeMode.light
+        brightness == Brightness.light
             ? 'assets/loading_dark.png'
             : 'assets/loading_light.png',
         width: widget.loadingSize,
