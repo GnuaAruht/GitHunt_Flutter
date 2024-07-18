@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:githunt_flutter/core/config/launch_url_util.dart';
 import 'package:githunt_flutter/core/const/api_const.dart';
 import 'package:githunt_flutter/core/const/ui_const.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -50,7 +51,7 @@ class _EnterTokenDialogState extends State<EnterTokenDialog> {
           suffix: Padding(
             padding: const EdgeInsets.only(left: 4.0),
             child: GestureDetector(
-              onTap: _onGenerateToken,
+              onTap: () => UrlUtil.launchUrlInApp(Uri.parse(ApiConst.tokenGenerateUrl)),
               child: const Text('Generate'),
             ),
           ),
@@ -94,13 +95,6 @@ class _EnterTokenDialogState extends State<EnterTokenDialog> {
         ),
       ],
     );
-  }
-
-  void _onGenerateToken() async {
-    if (!await launchUrl(Uri.parse(ApiConst.tokenGenerateUrl),
-        mode: LaunchMode.inAppBrowserView)) {
-      throw Exception('Could not launch.');
-    }
   }
 
   void _onSubmitToken() {

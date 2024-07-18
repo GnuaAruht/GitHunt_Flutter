@@ -1,3 +1,4 @@
+import 'package:githunt_flutter/core/config/launch_url_util.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +17,7 @@ import 'package:githunt_flutter/features/language/language_filter_bottom_sheet.d
 import 'package:githunt_flutter/features/main/provider/main_provider.dart';
 import 'package:githunt_flutter/features/widget/loading_widget.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:url_launcher/url_launcher.dart';
 
 part 'widget/app_bar.dart';
 part 'widget/repo_list.dart';

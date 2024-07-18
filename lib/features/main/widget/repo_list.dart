@@ -27,25 +27,28 @@ class _RepoItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(defaultPadding),
-      constraints: const BoxConstraints(minHeight: 200.0),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primaryContainer,
-        borderRadius: BorderRadius.circular(defaultRadius),
-        // boxShadow: defaultBoxShadow,
-        boxShadow: getBoxShadow(context),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildTitleRow(),
-          const SizedBox(height: 18.0),
-          _buildRepoContent(context),
-          const SizedBox(height: 18.0),
-          _buildRepoTagRow()
-        ],
+    return GestureDetector(
+      onTap: () => UrlUtil.launchUrlInApp(Uri.parse(repo.htmlUrl)),
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(defaultPadding),
+        constraints: const BoxConstraints(minHeight: 200.0),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primaryContainer,
+          borderRadius: BorderRadius.circular(defaultRadius),
+          // boxShadow: defaultBoxShadow,
+          boxShadow: getBoxShadow(context),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildTitleRow(),
+            const SizedBox(height: 18.0),
+            _buildRepoContent(context),
+            const SizedBox(height: 18.0),
+            _buildRepoTagRow()
+          ],
+        ),
       ),
     );
   }
@@ -91,14 +94,17 @@ class _RepoItemWidget extends StatelessWidget {
   Widget _buildTitleRow() {
     return Row(
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(defaultRadius),
-          child: CachedNetworkImage(
-            imageUrl: repo.owner.avatarUrl,
-            width: 50.0,
-            height: 50.0,
-            placeholder: (context, url) => const ColoredBox(color: Colors.grey),
-            errorWidget: (_, url, __) => const ColoredBox(color: Colors.grey),
+        GestureDetector(
+          onTap: () => UrlUtil.launchUrlInApp((Uri.parse(repo.owner.htmlUrl))),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(defaultRadius),
+            child: CachedNetworkImage(
+              imageUrl: repo.owner.avatarUrl,
+              width: 50.0,
+              height: 50.0,
+              placeholder: (context, url) => const ColoredBox(color: Colors.grey),
+              errorWidget: (_, url, __) => const ColoredBox(color: Colors.grey),
+            ),
           ),
         ),
         const SizedBox(width: 12.0),
