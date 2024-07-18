@@ -19,7 +19,7 @@ class _LanguageListWidget extends StatelessWidget {
               controller: controller,
               itemCount: languages.length,
               separatorBuilder: (_, __) => Divider(
-                thickness: 0.2,
+                thickness: 0.1,
                 height: 0.0,
                 color: Theme.of(context).colorScheme.onSurface,
               ),
