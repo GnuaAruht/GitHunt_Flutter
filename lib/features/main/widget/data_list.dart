@@ -18,6 +18,7 @@ class _SuccessContent extends StatelessWidget {
                 const _FilterMenu(),
                 const SizedBox(height: defaultPadding * 1.5),
                 const _MainDataList(),
+                const SizedBox(height: defaultPadding),
                 _buildListStatus(),
                 const SizedBox(height: defaultPadding),
               ],
@@ -74,6 +75,7 @@ class _MainDataList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: repoDataList.length,
       physics: const NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.all(0.0),
       separatorBuilder: (_, __) => const SizedBox(height: defaultPadding * 2),
       itemBuilder: (context, index) {
         final data = repoDataList[index];
