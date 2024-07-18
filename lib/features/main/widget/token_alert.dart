@@ -13,7 +13,7 @@ class _TokenAlertWidget extends StatelessWidget {
       onTap: () => EnterTokenDialog.show(context),
       child: Container(
         width: double.infinity,
-        color: const Color(0xFFF1B00A),
+        color: Theme.of(context).colorScheme.secondaryContainer,
         padding: const EdgeInsets.symmetric(
           horizontal: defaultPadding,
           vertical: 8.0,

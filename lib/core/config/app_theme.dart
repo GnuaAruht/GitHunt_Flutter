@@ -9,6 +9,7 @@ abstract class AppTheme {
       colorScheme: const ColorScheme.light(
         primary: Color(0xFF4A6EFB),
         primaryContainer: Colors.white,
+        secondaryContainer: Color(0xFFF1B00A),
         surface: Color(0xFFF5F5F5),
         onSurface: Colors.black,
         shadow: Colors.grey,
@@ -24,6 +25,7 @@ abstract class AppTheme {
       colorScheme: const ColorScheme.dark(
         primary: Color(0xFF2F8CE5),
         primaryContainer: Color(0xFF2C2C2C),
+        secondaryContainer: Color(0xFFC48A04),
         surface: Color(0xFF1E1E1E),
         onSurface: Colors.white,
         shadow: Colors.black26,

@@ -14,7 +14,6 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage>
     with SingleTickerProviderStateMixin {
-
   late final AnimationController controller;
 
   @override
@@ -42,38 +41,39 @@ class _SplashPageState extends State<SplashPage>
     return Scaffold(
       body: Center(
         child: AnimatedBuilder(
-            animation: controller,
-            builder: (context, child) {
-              return FadeTransition(
-                opacity: controller,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.asset(
-                      'assets/logo.png',
-                      width: _logoSize,
-                      height: _logoSize,
-                    ),
-                    const Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'GitHunt',
-                          style: TextStyle(
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.w600,
-                          ),
+          animation: controller,
+          builder: (context, child) {
+            return FadeTransition(
+              opacity: controller,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(
+                    'assets/logo.png',
+                    width: _logoSize,
+                    height: _logoSize,
+                  ),
+                  const Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'GitHunt',
+                        style: TextStyle(
+                          fontSize: 24.0,
+                          fontWeight: FontWeight.w600,
                         ),
-                        Text(
-                          'Most starred projects on GitHub',
-                          style: TextStyle(fontSize: 18.0),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              );
-            }),
+                      ),
+                      Text(
+                        'Most starred projects on GitHub',
+                        style: TextStyle(fontSize: 18.0),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }
