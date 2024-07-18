@@ -18,9 +18,10 @@ class _LanguageListWidget extends StatelessWidget {
           : ListView.separated(
               controller: controller,
               itemCount: languages.length,
-              separatorBuilder: (_, __) => const Divider(
-                thickness: 0.4,
+              separatorBuilder: (_, __) => Divider(
+                thickness: 0.2,
                 height: 0.0,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
               itemBuilder: (context, index) {
                 return _LanguageItemWidget(language: languages[index]);

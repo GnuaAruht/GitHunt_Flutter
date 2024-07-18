@@ -16,8 +16,8 @@ class _RepoListTitleWidget extends StatelessWidget {
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
       text: TextSpan(
-        style: const TextStyle(
-          color: Colors.black,
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.onSurface,
           fontSize: 20.0,
           fontWeight: FontWeight.w600,
         ),
@@ -28,7 +28,6 @@ class _RepoListTitleWidget extends StatelessWidget {
                 ? fromDate.toTitleFormat()
                 : '${fromDate.toTitleFormat()} - ${toDate.toTitleFormat()}',
             style: const TextStyle(
-              color: Colors.black,
               fontSize: 14.0,
               fontWeight: FontWeight.normal,
             ),

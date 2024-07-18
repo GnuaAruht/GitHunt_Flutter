@@ -24,7 +24,9 @@ class _DateFilterButton extends StatelessWidget {
     return PopupMenuButton(
       offset: const Offset(0, 1),
       position: PopupMenuPosition.under,
-      color: Colors.white,
+      elevation: 8.0,
+      shadowColor: Theme.of(context).colorScheme.shadow,
+      color: Theme.of(context).colorScheme.primaryContainer,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
       onSelected: (filter) {
         // add some delay for pop up dismiss
@@ -43,9 +45,9 @@ class _DateFilterButton extends StatelessWidget {
       child: _FilterBtnContainer(
         child: Row(
           children: [
-            const Icon(
+            Icon(
               Icons.calendar_month_outlined,
-              color: Colors.black,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
             const SizedBox(width: 8.0),
             Selector<MainProvider, DateFilter>(
@@ -78,13 +80,16 @@ class _LanguageFilterButton extends StatelessWidget {
       child: _FilterBtnContainer(
         child: Row(
           children: [
-            const Icon(Icons.filter_alt_sharp, color: Colors.black),
+            Icon(
+              Icons.filter_alt_sharp,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
             const SizedBox(width: 8.0),
-            Selector<MainProvider, String?>(
+            Selector<MainProvider, String>(
               selector: (_, provider) => provider.language,
               builder: (_, language, __) => AnimatedSwitcher(
                 duration: const Duration(milliseconds: 200),
-                child: Text(key: UniqueKey(), language ?? 'All languages'),
+                child: Text(key: UniqueKey(), language),
               ),
             )
           ],
@@ -111,9 +116,10 @@ class _FilterBtnContainer extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: defaultPadding),
       constraints: BoxConstraints(minWidth: minWidth),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(defaultRadius),
-        boxShadow: defaultBoxShadow,
+        // boxShadow: defaultBoxShadow,
+        boxShadow: getBoxShadow(context),
       ),
       alignment: Alignment.center,
       child: child,

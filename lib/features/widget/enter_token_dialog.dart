@@ -13,11 +13,9 @@ class EnterTokenDialog extends StatefulWidget {
 
   @override
   State<EnterTokenDialog> createState() => _EnterTokenDialogState();
-
 }
 
 class _EnterTokenDialogState extends State<EnterTokenDialog> {
-
   final _formKey = GlobalKey<FormState>();
   String? _token;
 
@@ -26,7 +24,7 @@ class _EnterTokenDialogState extends State<EnterTokenDialog> {
     return Container(
       width: MediaQuery.of(context).size.width * 0.86,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(defaultRadius),
       ),
       padding: const EdgeInsets.all(defaultPadding),
@@ -89,7 +87,10 @@ class _EnterTokenDialogState extends State<EnterTokenDialog> {
         const SizedBox(width: defaultPadding / 2),
         TextButton(
           onPressed: () => SmartDialog.dismiss(),
-          child: const Text('CANCEL', style: TextStyle(color: Colors.red)),
+          child: Text(
+            'CANCEL',
+            style: TextStyle(color: Theme.of(context).colorScheme.error),
+          ),
         ),
       ],
     );

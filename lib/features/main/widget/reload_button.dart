@@ -17,8 +17,8 @@ class _ReloadButton extends StatelessWidget {
         padding: const EdgeInsets.all(defaultPadding * 0.8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(defaultRadius),
-          color: Colors.blue,
-          boxShadow: defaultBoxShadow,
+          color: Theme.of(context).colorScheme.primary,
+          boxShadow: getBoxShadow(context),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,

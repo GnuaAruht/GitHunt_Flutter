@@ -5,10 +5,12 @@ const defaultRadius = 12.0;
 
 const minFilterBtnWidth = 100.0;
 
-const defaultBoxShadow = [
-  BoxShadow(
-    color: Colors.grey,
-    offset: Offset(0.0, 1.0),
-    blurRadius: 1.0,
-  ),
-];
+List<BoxShadow> getBoxShadow(BuildContext context) {
+  return [
+    BoxShadow(
+      color: Theme.of(context).colorScheme.shadow,
+      offset: const Offset(0.0, 1.0),
+      blurRadius: 1.0,
+    ),
+  ];
+}

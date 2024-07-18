@@ -17,6 +17,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(context),
+      // backgroundColor: Theme.of(context).colorScheme.surface,
       body: Column(
         children: [
           _buildChangeThemeTile(context),

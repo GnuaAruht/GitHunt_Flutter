@@ -32,16 +32,17 @@ class _RepoItemWidget extends StatelessWidget {
       padding: const EdgeInsets.all(defaultPadding),
       constraints: const BoxConstraints(minHeight: 200.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.primaryContainer,
         borderRadius: BorderRadius.circular(defaultRadius),
-        boxShadow: defaultBoxShadow,
+        // boxShadow: defaultBoxShadow,
+        boxShadow: getBoxShadow(context),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildTitleRow(),
           const SizedBox(height: 18.0),
-          _buildRepoContent(),
+          _buildRepoContent(context),
           const SizedBox(height: 18.0),
           _buildRepoTagRow()
         ],
@@ -49,7 +50,7 @@ class _RepoItemWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildRepoContent() {
+  Widget _buildRepoContent(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -57,8 +58,8 @@ class _RepoItemWidget extends StatelessWidget {
           repo.name,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-            color: Color(0xFF4A6EFB),
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.primary,
             fontSize: 16.0,
             fontWeight: FontWeight.w600,
           ),
@@ -151,8 +152,8 @@ class _Tag extends StatelessWidget {
       children: [
         SvgPicture.asset(
           assetSvgUrl,
-          colorFilter: const ColorFilter.mode(
-            Colors.black54,
+          colorFilter: ColorFilter.mode(
+            Theme.of(context).colorScheme.onSurface,
             BlendMode.srcIn,
           ),
         ),

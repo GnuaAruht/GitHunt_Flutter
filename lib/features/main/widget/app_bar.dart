@@ -7,14 +7,15 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       centerTitle: false,
-      backgroundColor: Colors.white,
-      elevation: 4.0,
+      elevation: 8.0,
+      scrolledUnderElevation: 4.0,
       title: const Row(
         children: [
           CircleAvatar(
-              radius: 28.0,
-              backgroundColor: Colors.transparent,
-              backgroundImage: AssetImage('assets/logo.png')),
+            radius: 28.0,
+            backgroundColor: Colors.transparent,
+            backgroundImage: AssetImage('assets/logo.png'),
+          ),
           SizedBox(width: 12.0),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,22 +38,10 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          onPressed: () {
-
-            context.go(RouteConst.settingPath);
-
-          },
+          onPressed: () => context.go(RouteConst.settingPath),
           icon: const Icon(Icons.more_vert),
         )
       ],
-      // bottom: PreferredSize(
-      //   preferredSize: const Size.fromHeight(50.0),
-      //   child: Container(
-      //     width: double.infinity,
-      //     height: 50.0,
-      //     color: Colors.green,
-      //   ),
-      // ),
     );
   }
 
