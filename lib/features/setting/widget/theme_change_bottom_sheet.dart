@@ -65,9 +65,8 @@ class _ThemeChangeBottomSheetState extends State<_ThemeChangeBottomSheet> {
                     groupValue: selectedThemeMode,
                     onChanged: (value) {
                       if (value != null) {
-                        setState(() {
-                          selectedThemeMode = value;
-                        });
+                        setState(() => selectedThemeMode = value);
+                        context.pop(mode);
                       }
                     },
                   ),
