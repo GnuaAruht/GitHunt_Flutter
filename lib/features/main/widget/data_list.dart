@@ -30,7 +30,7 @@ class _SuccessContent extends StatelessWidget {
   }
 
   Widget _buildBanner() {
-    return Selector<MainProvider, bool>(
+    return Selector<PATProvider, bool>(
       selector: (_, provider) => provider.shouldShowBanner,
       builder: (_, show, __) {
         return AnimatedSwitcher(

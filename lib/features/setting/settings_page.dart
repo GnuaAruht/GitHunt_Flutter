@@ -1,14 +1,17 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:githunt_flutter/core/const/ui_const.dart';
 import 'package:githunt_flutter/features/widget/enter_token_dialog.dart';
+import 'package:githunt_flutter/pat_provider.dart';
 import 'package:githunt_flutter/theme_provider.dart';
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:provider/provider.dart';
 
 part './widget/theme_change_bottom_sheet.dart';
+part './widget/change_theme_tile.dart';
+part './widget/pat_action_tile.dart';
+part './widget/clear_pat_tile.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -17,11 +20,11 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _buildAppBar(context),
-      // backgroundColor: Theme.of(context).colorScheme.surface,
       body: Column(
         children: [
-          _buildChangeThemeTile(context),
-          _buildTokenTile(context),
+          const _ChangeThemeTile(),
+          const _PATActionTile(),
+          _buildClearTokenTile(),
           const Spacer(),
           Center(child: _buildVersion()),
           const SizedBox(height: defaultPadding * 3)
@@ -42,6 +45,15 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
+  Widget _buildClearTokenTile() {
+    return Selector<PATProvider, bool>(
+      selector: (_, provider) => provider.tokenAdded,
+      builder: (_, added, __) {
+        return added ? const _ClearPATTile() : const SizedBox.shrink();
+      },
+    );
+  }
+
   Widget _buildVersion() {
     return FutureBuilder(
       future: PackageInfo.fromPlatform(),
@@ -56,33 +68,4 @@ class SettingsPage extends StatelessWidget {
       },
     );
   }
-
-  Widget _buildChangeThemeTile(BuildContext context) {
-    return ListTile(
-      onTap: () {
-        _ThemeChangeBottomSheet.show(context).then((mode) {
-          if (mode != null) {
-            context.read<ThemeProvider>().changeTheme(mode);
-          }
-        });
-      },
-      title: const Text('Change theme'),
-      subtitle: const Text('Tap to change the theme'),
-    );
-  }
-
-  Widget _buildTokenTile(BuildContext context) {
-    return ListTile(
-      onTap: () {
-        EnterTokenDialog.show(context).then((token) {
-          if (token != null) {
-            // todo save token
-          }
-        });
-      },
-      title: const Text('Update token'),
-      subtitle: const Text('Tap to update the token'),
-    );
-  }
-
 }

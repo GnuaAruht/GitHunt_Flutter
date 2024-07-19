@@ -14,6 +14,7 @@ abstract class AppRepository {
   Future<void> saveGithubToken(String token);
   Future<String?> getGitHubToken();
   Future<bool> checkIfTokenAdded();
+  Future<void> clearGitHubToken();
   Future<DataState<RepositoriesData>> getRepositoryList({
     required String language,
     required DateTime fromDate,
@@ -86,6 +87,11 @@ class AppRepositoryImpl implements AppRepository {
   @override
   Future<bool> checkIfTokenAdded() {
     return local.checkIfTokenAdded();
+  }
+
+  @override
+  Future<void> clearGitHubToken() {
+    return local.clearGitHubToken();
   }
 
   @override

@@ -3,20 +3,23 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:githunt_flutter/core/config/launch_url_util.dart';
 import 'package:githunt_flutter/core/const/api_const.dart';
 import 'package:githunt_flutter/core/const/ui_const.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class EnterTokenDialog extends StatefulWidget {
-  const EnterTokenDialog({super.key});
+  const EnterTokenDialog({super.key, required this.isAdd});
 
-  static Future<String?> show(BuildContext context) {
-    return SmartDialog.show<String>(builder: (_) => const EnterTokenDialog());
+  static Future<String?> show(BuildContext context, bool isAdd) {
+    return SmartDialog.show<String>(
+        builder: (_) => EnterTokenDialog(isAdd: isAdd));
   }
+
+  final bool isAdd;
 
   @override
   State<EnterTokenDialog> createState() => _EnterTokenDialogState();
 }
 
 class _EnterTokenDialogState extends State<EnterTokenDialog> {
+
   final _formKey = GlobalKey<FormState>();
   String? _token;
 
@@ -51,11 +54,14 @@ class _EnterTokenDialogState extends State<EnterTokenDialog> {
           suffix: Padding(
             padding: const EdgeInsets.only(left: 4.0),
             child: GestureDetector(
-              onTap: () => UrlUtil.launchUrlInApp(Uri.parse(ApiConst.tokenGenerateUrl)),
+              onTap: () {
+                UrlUtil.launchUrlInApp(Uri.parse(ApiConst.tokenGenerateUrl));
+              },
               child: const Text('Generate'),
             ),
           ),
-          hintText: 'Your token',
+          // hintText: 'Your token',
+          hintText: '${widget.isAdd ? 'Update' : 'Enter'} your token',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(defaultRadius),
           ),
@@ -72,7 +78,7 @@ class _EnterTokenDialogState extends State<EnterTokenDialog> {
 
   Widget _buildTitle() {
     return const Text(
-      'Enter your token',
+      'Personal access token',
       style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
     );
   }
@@ -83,7 +89,7 @@ class _EnterTokenDialogState extends State<EnterTokenDialog> {
       children: [
         TextButton(
           onPressed: _onSubmitToken,
-          child: const Text('ADD'),
+          child: Text(widget.isAdd ? 'UPDATE' : 'ADD'),
         ),
         const SizedBox(width: defaultPadding / 2),
         TextButton(
@@ -102,4 +108,5 @@ class _EnterTokenDialogState extends State<EnterTokenDialog> {
       SmartDialog.dismiss(result: _token);
     }
   }
+
 }

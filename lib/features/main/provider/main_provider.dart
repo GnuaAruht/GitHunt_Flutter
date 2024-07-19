@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:githunt_flutter/core/config/date_filter.dart';
 import 'package:githunt_flutter/core/config/ui_state.dart';
-import 'package:githunt_flutter/core/model/language_model.dart';
 import 'package:githunt_flutter/core/model/repositories_data.dart';
 import 'package:githunt_flutter/core/repository/app_repository.dart';
 
@@ -20,14 +19,6 @@ class MainProvider extends ChangeNotifier {
   // ui state
   UIState _uiState = const UIState.init();
   UIState get uiState => _uiState;
-
-  late bool _tokenAdded;
-  bool get tokenAdded => _tokenAdded;
-
-  late bool _bannerClosed;
-  bool get bannerClosed => _bannerClosed;
-
-  bool get shouldShowBanner => !(tokenAdded || bannerClosed);
 
   List<RepositoriesData> _repositoriesData = [];
   List<RepositoriesData> get repositoriesData => _repositoriesData;
@@ -54,28 +45,11 @@ class MainProvider extends ChangeNotifier {
     _initDataLoading();
   }
 
-  Future<void> markBannerClosed() async {
-    _bannerClosed = true;
-    repository.markAsBannerClosed();
-    notifyListeners();
-  }
-
   Future<void> _initDataLoading() async {
     await _getSavedLanguage();
     await _getSaveDateFilter();
-    await _checkIfTokenAdded();
-    await _checkIfBannerClosed();
     _startDataLoading();
   }
-
-  Future<void> _checkIfBannerClosed() async {
-    _bannerClosed = await repository.checkIfBannerClosed();
-  }
-
-  Future<void> _checkIfTokenAdded() async {
-    _tokenAdded = await repository.checkIfTokenAdded();
-  }
-
 
   Future<void> _getSavedLanguage() async {
     _language = await repository.getSavedLang();
@@ -142,13 +116,8 @@ class MainProvider extends ChangeNotifier {
 
   void reloadNextData() => _getRepositories();
 
-  Future<void> saveGithubToken(String token) async {
-    await repository.saveGithubToken(token);
-    _tokenAdded = true;
-    notifyListeners();
-  }
-
   Color? getColorByLanguageName(String? name) {
     return repository.getColorByLanguageName(name);
   }
+
 }

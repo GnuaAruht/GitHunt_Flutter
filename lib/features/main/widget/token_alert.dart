@@ -4,13 +4,18 @@ const _tokenAlertMessage =
     "Generate a token and add it to avoid hitting the rate limit.";
 
 class _TokenAlertWidget extends StatelessWidget {
-
   const _TokenAlertWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => EnterTokenDialog.show(context),
+      onTap: () {
+        EnterTokenDialog.show(context, false).then((token) {
+          if (token != null) {
+            context.read<PATProvider>().addToken(token);
+          }
+        });
+      },
       child: Container(
         width: double.infinity,
         color: Theme.of(context).colorScheme.secondaryContainer,
@@ -33,7 +38,7 @@ class _TokenAlertWidget extends StatelessWidget {
             ),
             const SizedBox(width: defaultPadding / 2),
             GestureDetector(
-              onTap: () => context.read<MainProvider>().markBannerClosed(),
+              onTap: () => context.read<PATProvider>().markBannerClosed(),
               child: const Icon(Icons.close, color: Colors.white),
             )
           ],

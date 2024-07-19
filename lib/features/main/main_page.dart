@@ -1,4 +1,5 @@
 import 'package:githunt_flutter/core/config/launch_url_util.dart';
+import 'package:githunt_flutter/pat_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

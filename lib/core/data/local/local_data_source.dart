@@ -12,6 +12,7 @@ abstract class LocalDataSource {
   Future<void> saveGitHubToken(String token);
   Future<String?> getGitHubToken();
   Future<bool> checkIfTokenAdded();
+  Future<void> clearGitHubToken();
   Future<void> saveDateFilter(DateFilter dateFilter);
   Future<DateFilter> getDateFilter();
   Future<void> saveLanguage(String language);
@@ -82,7 +83,6 @@ class LocalDataSourceImpl implements LocalDataSource {
     return prefs.getString(_languageFilter) ?? allLanguages;
   }
 
-
   @override
   Future<void> saveGitHubToken(String token) async {
     await _secureStorage.write(key: _githubTokenKey, value: token);
@@ -97,6 +97,11 @@ class LocalDataSourceImpl implements LocalDataSource {
   Future<bool> checkIfTokenAdded() async {
     final token = await getGitHubToken();
     return token != null;
+  }
+
+  @override
+  Future<void> clearGitHubToken() async {
+    return await _secureStorage.delete(key: _githubTokenKey);
   }
 
   @override
