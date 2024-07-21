@@ -11,11 +11,10 @@ class _ListStatusWidget extends StatelessWidget {
         return AnimatedSwitcher(
           duration: const Duration(milliseconds: 200),
           child: uiState.whenOrNull(
-                success: () => _ReloadButton(
-                  onPressed: () => context.read<MainProvider>().reloadData(),
-                ),
-              ) ??
-              LoadingWidget.small(),
+            success: () => const _LoadNextDataButton(),
+            loading: () => LoadingWidget.small(),
+            error: (err) => _ErrorContent(error: err),
+          ),
         );
       },
     );

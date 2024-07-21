@@ -8,17 +8,15 @@ class _ErrorContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          isUnAuthorized
-              ? const Text('Your token might have expired.')
-              : Text(error.message),
-          const SizedBox(height: defaultPadding),
-          _buildButton(context)
-        ],
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        isUnAuthorized
+            ? const Text('Your token might have expired.')
+            : Text(error.message),
+        const SizedBox(height: defaultPadding / 2),
+        _buildButton(context)
+      ],
     );
   }
 
@@ -27,8 +25,8 @@ class _ErrorContent extends StatelessWidget {
       onTap: () => _onButtonPressed(context),
       child: Container(
         padding: const EdgeInsets.symmetric(
-          horizontal: defaultPadding * 0.8,
-          vertical: defaultPadding / 2,
+          horizontal: defaultPadding,
+          vertical: defaultPadding * 0.8,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(defaultRadius),
@@ -36,7 +34,7 @@ class _ErrorContent extends StatelessWidget {
           boxShadow: getBoxShadow(context),
         ),
         child: Text(
-          isUnAuthorized ? 'Update token' : 'Refresh',
+          isUnAuthorized ? 'Update token' : 'Retry',
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
@@ -50,7 +48,7 @@ class _ErrorContent extends StatelessWidget {
     if (isUnAuthorized) {
       _showTokenActionDialog(context);
     } else {
-      context.read<MainProvider>().reloadData();
+      context.read<MainProvider>().loadData();
     }
   }
 
@@ -75,7 +73,7 @@ class _ErrorContent extends StatelessWidget {
         if (token != null) {
           // update token and refresh data list
           context.read<PATProvider>().addToken(token).whenComplete(() {
-            context.read<MainProvider>().reloadData();
+            context.read<MainProvider>().loadData();
           });
         }
       },
@@ -88,7 +86,7 @@ class _ErrorContent extends StatelessWidget {
         if (confirm ?? false) {
           // clear token and refresh data list
           context.read<PATProvider>().clearToken().whenComplete(() {
-            context.read<MainProvider>().reloadData();
+            context.read<MainProvider>().loadData();
           });
         }
       },

@@ -1,9 +1,7 @@
 part of '../main_page.dart';
 
-class _ReloadButton extends StatelessWidget {
-  final VoidCallback? onPressed;
-
-  const _ReloadButton({super.key, this.onPressed});
+class _LoadNextDataButton extends StatelessWidget {
+  const _LoadNextDataButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +10,7 @@ class _ReloadButton extends StatelessWidget {
         .select<MainProvider, DateFilter>((provider) => provider.dateFilter);
 
     return InkWell(
-      onTap: onPressed,
+      onTap: () => context.read<MainProvider>().loadData(),
       child: Container(
         padding: const EdgeInsets.all(defaultPadding * 0.8),
         decoration: BoxDecoration(
@@ -37,4 +35,5 @@ class _ReloadButton extends StatelessWidget {
       ),
     );
   }
+
 }

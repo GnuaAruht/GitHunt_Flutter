@@ -113,7 +113,7 @@ class MainProvider extends ChangeNotifier {
     }
   }
 
-  void reloadData() => _getRepositories();
+  void loadData() => _getRepositories();
 
   Color? getColorByLanguageName(String? name) {
     return repository.getColorByLanguageName(name);

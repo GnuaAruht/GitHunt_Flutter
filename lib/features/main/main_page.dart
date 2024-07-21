@@ -25,7 +25,7 @@ import 'package:timeago/timeago.dart' as timeago;
 part 'widget/app_bar.dart';
 part 'widget/repo_list.dart';
 part 'widget/filter_menu.dart';
-part 'widget/reload_button.dart';
+part 'widget/load_next_data_button.dart';
 part 'widget/repositories_data.dart';
 part 'widget/list_status.dart';
 part 'widget/token_alert.dart';
@@ -60,7 +60,7 @@ class MainPage extends StatelessWidget {
 
   Widget _buildLoading() => Center(child: LoadingWidget.medium());
 
-  Widget _buildError(Error error) => _ErrorContent(error: error);
+  Widget _buildError(Error error) => Center(child: _ErrorContent(error: error));
 
 }
 
