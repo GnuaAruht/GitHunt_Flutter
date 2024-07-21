@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:githunt_flutter/core/const/ui_const.dart';
+import 'package:githunt_flutter/features/widget/confirm_token_clear_dialog.dart';
 import 'package:githunt_flutter/features/widget/enter_token_dialog.dart';
 import 'package:githunt_flutter/pat_provider.dart';
 import 'package:githunt_flutter/theme_provider.dart';

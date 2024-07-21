@@ -21,7 +21,7 @@ mixin _$UIState {
     required TResult Function() init,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String message) error,
+    required TResult Function(Error error) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$UIState {
     TResult? Function()? init,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String message)? error,
+    TResult? Function(Error error)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$UIState {
     TResult Function()? init,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String message)? error,
+    TResult Function(Error error)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,7 +126,7 @@ class _$UIStateInitImpl implements UIStateInit {
     required TResult Function() init,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String message) error,
+    required TResult Function(Error error) error,
   }) {
     return init();
   }
@@ -137,7 +137,7 @@ class _$UIStateInitImpl implements UIStateInit {
     TResult? Function()? init,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String message)? error,
+    TResult? Function(Error error)? error,
   }) {
     return init?.call();
   }
@@ -148,7 +148,7 @@ class _$UIStateInitImpl implements UIStateInit {
     TResult Function()? init,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String message)? error,
+    TResult Function(Error error)? error,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -240,7 +240,7 @@ class _$UIStateLoadingImpl implements UIStateLoading {
     required TResult Function() init,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String message) error,
+    required TResult Function(Error error) error,
   }) {
     return loading();
   }
@@ -251,7 +251,7 @@ class _$UIStateLoadingImpl implements UIStateLoading {
     TResult? Function()? init,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String message)? error,
+    TResult? Function(Error error)? error,
   }) {
     return loading?.call();
   }
@@ -262,7 +262,7 @@ class _$UIStateLoadingImpl implements UIStateLoading {
     TResult Function()? init,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String message)? error,
+    TResult Function(Error error)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -354,7 +354,7 @@ class _$UIStateSuccessImpl implements UIStateSuccess {
     required TResult Function() init,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String message) error,
+    required TResult Function(Error error) error,
   }) {
     return success();
   }
@@ -365,7 +365,7 @@ class _$UIStateSuccessImpl implements UIStateSuccess {
     TResult? Function()? init,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String message)? error,
+    TResult? Function(Error error)? error,
   }) {
     return success?.call();
   }
@@ -376,7 +376,7 @@ class _$UIStateSuccessImpl implements UIStateSuccess {
     TResult Function()? init,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String message)? error,
+    TResult Function(Error error)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -433,7 +433,7 @@ abstract class _$$UIStateErrorImplCopyWith<$Res> {
           _$UIStateErrorImpl value, $Res Function(_$UIStateErrorImpl) then) =
       __$$UIStateErrorImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Error error});
 }
 
 /// @nodoc
@@ -447,13 +447,13 @@ class __$$UIStateErrorImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? error = null,
   }) {
     return _then(_$UIStateErrorImpl(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Error,
     ));
   }
 }
@@ -461,14 +461,14 @@ class __$$UIStateErrorImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UIStateErrorImpl implements UIStateError {
-  const _$UIStateErrorImpl(this.message);
+  const _$UIStateErrorImpl(this.error);
 
   @override
-  final String message;
+  final Error error;
 
   @override
   String toString() {
-    return 'UIState.error(message: $message)';
+    return 'UIState.error(error: $error)';
   }
 
   @override
@@ -476,11 +476,11 @@ class _$UIStateErrorImpl implements UIStateError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UIStateErrorImpl &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
@@ -494,9 +494,9 @@ class _$UIStateErrorImpl implements UIStateError {
     required TResult Function() init,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function(String message) error,
+    required TResult Function(Error error) error,
   }) {
-    return error(message);
+    return error(this.error);
   }
 
   @override
@@ -505,9 +505,9 @@ class _$UIStateErrorImpl implements UIStateError {
     TResult? Function()? init,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function(String message)? error,
+    TResult? Function(Error error)? error,
   }) {
-    return error?.call(message);
+    return error?.call(this.error);
   }
 
   @override
@@ -516,11 +516,11 @@ class _$UIStateErrorImpl implements UIStateError {
     TResult Function()? init,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function(String message)? error,
+    TResult Function(Error error)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(message);
+      return error(this.error);
     }
     return orElse();
   }
@@ -564,9 +564,9 @@ class _$UIStateErrorImpl implements UIStateError {
 }
 
 abstract class UIStateError implements UIState {
-  const factory UIStateError(final String message) = _$UIStateErrorImpl;
+  const factory UIStateError(final Error error) = _$UIStateErrorImpl;
 
-  String get message;
+  Error get error;
   @JsonKey(ignore: true)
   _$$UIStateErrorImplCopyWith<_$UIStateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;

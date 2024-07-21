@@ -7,7 +7,7 @@ import 'package:githunt_flutter/core/const/ui_const.dart';
 class EnterTokenDialog extends StatefulWidget {
   const EnterTokenDialog({super.key, required this.isAdd});
 
-  static Future<String?> show(BuildContext context, bool isAdd) {
+  static Future<String?> show({required bool isAdd}) {
     return SmartDialog.show<String>(
         builder: (_) => EnterTokenDialog(isAdd: isAdd));
   }

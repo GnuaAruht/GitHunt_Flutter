@@ -1,4 +1,7 @@
 import 'package:githunt_flutter/core/config/launch_url_util.dart';
+import 'package:githunt_flutter/core/model/error_model.dart';
+import 'package:githunt_flutter/features/widget/confirm_token_clear_dialog.dart';
+import 'package:githunt_flutter/features/widget/token_action_dialog.dart';
 import 'package:githunt_flutter/pat_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +21,6 @@ import 'package:githunt_flutter/features/language/language_filter_bottom_sheet.d
 import 'package:githunt_flutter/features/main/provider/main_provider.dart';
 import 'package:githunt_flutter/features/widget/loading_widget.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:url_launcher/url_launcher.dart';
 
 part 'widget/app_bar.dart';
 part 'widget/repo_list.dart';
@@ -29,6 +31,7 @@ part 'widget/list_status.dart';
 part 'widget/token_alert.dart';
 part 'widget/data_list.dart';
 part 'widget/repo_list_title.dart';
+part 'widget/error_content.dart';
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
@@ -46,7 +49,7 @@ class MainPage extends StatelessWidget {
         child: uiState.whenOrNull(
               success: () => _buildSuccess(context),
               loading: () => _buildLoading(),
-              error: (_) => _buildError(),
+              error: (err) => _buildError(err),
             ) ??
             const SizedBox.shrink(),
       ),
@@ -57,5 +60,7 @@ class MainPage extends StatelessWidget {
 
   Widget _buildLoading() => Center(child: LoadingWidget.medium());
 
-  Widget _buildError() => const Center(child: Text('Data loading error.'));
+  Widget _buildError(Error error) => _ErrorContent(error: error);
+
 }
+

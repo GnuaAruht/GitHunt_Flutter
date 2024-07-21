@@ -10,7 +10,7 @@ class _TokenAlertWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        EnterTokenDialog.show(context, false).then((token) {
+        EnterTokenDialog.show(isAdd: false).then((token) {
           if (token != null) {
             context.read<PATProvider>().addToken(token);
           }

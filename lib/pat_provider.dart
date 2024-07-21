@@ -44,7 +44,7 @@ class PATProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void clearToken() async {
+  Future<void> clearToken() async {
     await repo.clearGitHubToken();
     _tokenAdded = false;
     notifyListeners();

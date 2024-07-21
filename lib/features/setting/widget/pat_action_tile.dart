@@ -11,7 +11,7 @@ class _PATActionTile extends StatelessWidget {
 
     return ListTile(
       onTap: () {
-        EnterTokenDialog.show(context,tokenAdded).then((token) {
+        EnterTokenDialog.show(isAdd: tokenAdded).then((token) {
           if (token != null) {
             context.read<PATProvider>().addToken(token);
           }

@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:githunt_flutter/core/config/date_filter.dart';
 import 'package:githunt_flutter/core/data/local/local_data_source.dart';
+import 'package:githunt_flutter/core/model/error_model.dart';
 import 'package:githunt_flutter/core/model/repository.dart';
 import 'package:githunt_flutter/core/model/repositories_data.dart';
 import 'package:githunt_flutter/core/config/data_state.dart';
@@ -10,34 +11,46 @@ import 'package:githunt_flutter/core/model/language_model.dart';
 
 abstract class AppRepository {
   Color? getColorByLanguageName(String? name);
+
   List<Language> getLanguageList();
+
   Future<void> saveGithubToken(String token);
+
   Future<String?> getGitHubToken();
+
   Future<bool> checkIfTokenAdded();
+
   Future<void> clearGitHubToken();
+
   Future<DataState<RepositoriesData>> getRepositoryList({
     required String language,
     required DateTime fromDate,
     required DateTime toDate,
   });
+
   Future<String> getSavedLang();
+
   Future<void> saveLanguage(String language);
+
   Future<DateFilter> getSavedDateFilter();
+
   Future<void> saveDateFilter(DateFilter dateFilter);
+
   Future<void> markAsBannerClosed();
+
   Future<bool> checkIfBannerClosed();
+
   Future<void> saveThemeMode(ThemeMode themeMode);
+
   Future<ThemeMode> getThemeMode();
 }
 
-const _unknownError = "Something went wrong";
+class AppRepositoryImpl with ErrorConvertable implements AppRepository {
 
-class AppRepositoryImpl implements AppRepository {
   final LocalDataSource local;
   final RemoteDataSource remote;
 
   AppRepositoryImpl({required this.local, required this.remote});
-
 
   @override
   Future<String> getSavedLang() => local.getLanguage();
@@ -49,8 +62,8 @@ class AppRepositoryImpl implements AppRepository {
   Future<DateFilter> getSavedDateFilter() => local.getDateFilter();
 
   @override
-  Future<void> saveDateFilter(DateFilter dateFilter) => local.saveDateFilter(dateFilter);
-
+  Future<void> saveDateFilter(DateFilter dateFilter) =>
+      local.saveDateFilter(dateFilter);
 
   @override
   Future<DataState<RepositoriesData>> getRepositoryList({
@@ -60,7 +73,12 @@ class AppRepositoryImpl implements AppRepository {
   }) async {
     try {
       final String? pat = await local.getGitHubToken();
-      final result = await remote.getRepositoryList(pat,language, fromDate, toDate);
+      final result = await remote.getRepositoryList(
+        pat,
+        language,
+        fromDate,
+        toDate,
+      );
       final repositoriesData = RepositoriesData(
         fromDate: fromDate,
         toDate: toDate,
@@ -70,7 +88,7 @@ class AppRepositoryImpl implements AppRepository {
       );
       return DataState.success(repositoriesData);
     } on DioException catch (e) {
-      return DataState.failure(e.response?.statusMessage ?? _unknownError);
+      return DataState.failure(convertError(e));
     }
   }
 
@@ -121,9 +139,28 @@ class AppRepositoryImpl implements AppRepository {
   Future<void> saveThemeMode(ThemeMode themeMode) {
     return local.saveThemeMode(themeMode);
   }
-
 }
 
+mixin ErrorConvertable {
+  Error convertError(DioException e) {
+    late Error error;
+    switch (e.type) {
+      case DioExceptionType.badResponse:
+        final response = e.response!;
+        error = Error(
+          code: response.statusCode!,
+          message: response.statusMessage!,
+        );
+      case DioExceptionType.connectionError:
+        error = Error.connectionError();
+      case DioExceptionType.connectionTimeout:
+        error = Error.connectionTimeOut();
+      default:
+        error = Error.unknown();
+    }
+    return error;
+  }
+}
 
 // Future<List<Language>> _getLanguagesFromRemote() async {
 //   final languages = <Language>[];

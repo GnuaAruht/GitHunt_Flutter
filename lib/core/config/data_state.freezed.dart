@@ -19,19 +19,19 @@ mixin _$DataState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(String message) failure,
+    required TResult Function(Error error) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(Error error)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(String message)? failure,
+    TResult Function(Error error)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,7 +141,7 @@ class _$DataStateSuccessImpl<T> implements DataStateSuccess<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(String message) failure,
+    required TResult Function(Error error) failure,
   }) {
     return success(data);
   }
@@ -150,7 +150,7 @@ class _$DataStateSuccessImpl<T> implements DataStateSuccess<T> {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(Error error)? failure,
   }) {
     return success?.call(data);
   }
@@ -159,7 +159,7 @@ class _$DataStateSuccessImpl<T> implements DataStateSuccess<T> {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(String message)? failure,
+    TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -215,7 +215,7 @@ abstract class _$$DataStateFailureImplCopyWith<T, $Res> {
           $Res Function(_$DataStateFailureImpl<T>) then) =
       __$$DataStateFailureImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({String message});
+  $Res call({Error error});
 }
 
 /// @nodoc
@@ -229,13 +229,13 @@ class __$$DataStateFailureImplCopyWithImpl<T, $Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? message = null,
+    Object? error = null,
   }) {
     return _then(_$DataStateFailureImpl<T>(
-      null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
+      null == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Error,
     ));
   }
 }
@@ -243,14 +243,14 @@ class __$$DataStateFailureImplCopyWithImpl<T, $Res>
 /// @nodoc
 
 class _$DataStateFailureImpl<T> implements DataStateFailure<T> {
-  _$DataStateFailureImpl(this.message);
+  _$DataStateFailureImpl(this.error);
 
   @override
-  final String message;
+  final Error error;
 
   @override
   String toString() {
-    return 'DataState<$T>.failure(message: $message)';
+    return 'DataState<$T>.failure(error: $error)';
   }
 
   @override
@@ -258,11 +258,11 @@ class _$DataStateFailureImpl<T> implements DataStateFailure<T> {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DataStateFailureImpl<T> &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.error, error) || other.error == error));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, message);
+  int get hashCode => Object.hash(runtimeType, error);
 
   @JsonKey(ignore: true)
   @override
@@ -275,29 +275,29 @@ class _$DataStateFailureImpl<T> implements DataStateFailure<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(T data) success,
-    required TResult Function(String message) failure,
+    required TResult Function(Error error) failure,
   }) {
-    return failure(message);
+    return failure(error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(T data)? success,
-    TResult? Function(String message)? failure,
+    TResult? Function(Error error)? failure,
   }) {
-    return failure?.call(message);
+    return failure?.call(error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(T data)? success,
-    TResult Function(String message)? failure,
+    TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(message);
+      return failure(error);
     }
     return orElse();
   }
@@ -335,9 +335,9 @@ class _$DataStateFailureImpl<T> implements DataStateFailure<T> {
 }
 
 abstract class DataStateFailure<T> implements DataState<T> {
-  factory DataStateFailure(final String message) = _$DataStateFailureImpl<T>;
+  factory DataStateFailure(final Error error) = _$DataStateFailureImpl<T>;
 
-  String get message;
+  Error get error;
   @JsonKey(ignore: true)
   _$$DataStateFailureImplCopyWith<T, _$DataStateFailureImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;

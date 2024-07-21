@@ -12,9 +12,7 @@ class _ListStatusWidget extends StatelessWidget {
           duration: const Duration(milliseconds: 200),
           child: uiState.whenOrNull(
                 success: () => _ReloadButton(
-                  onPressed: () {
-                    return context.read<MainProvider>().reloadNextData();
-                  },
+                  onPressed: () => context.read<MainProvider>().reloadData(),
                 ),
               ) ??
               LoadingWidget.small(),

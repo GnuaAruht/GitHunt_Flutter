@@ -88,12 +88,11 @@ class MainProvider extends ChangeNotifier {
         _toDate = _fromDate;
         notifyListeners();
       },
-      failure: (msg) {
-        _uiState = UIState.error(msg);
+      failure: (error) {
+        _uiState = UIState.error(error);
         notifyListeners();
       },
     );
-
   }
 
   Future<void> updateLanguage(String language) async {
@@ -114,7 +113,7 @@ class MainProvider extends ChangeNotifier {
     }
   }
 
-  void reloadNextData() => _getRepositories();
+  void reloadData() => _getRepositories();
 
   Color? getColorByLanguageName(String? name) {
     return repository.getColorByLanguageName(name);

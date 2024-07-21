@@ -43,6 +43,7 @@ class GitHuntApp extends StatelessWidget {
       builder: (_, themeMode, __) {
         return MaterialApp.router(
           title: 'Flutter GitHunt',
+          debugShowCheckedModeBanner: false,
           theme: AppTheme.buildLightTheme(),
           darkTheme: AppTheme.buildDarkTheme(),
           routerConfig: appRouter,
